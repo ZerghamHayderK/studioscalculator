@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bayut Studios | Price Calculator</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;700;900&family=Inter:wght@900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;700;900&family=Inter:wght@900&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-green: #37b36f;
@@ -24,131 +22,34 @@
             min-height: 100vh;
         }
 
-        /* STAR LAYERS - EXTRA DENSE */
-        body::before {
+        /* STAR LAYERS */
+        body::before, body::after, .extra-stars {
             content: "";
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(1px 1px at 2% 3%, #fff, transparent),
-                radial-gradient(2px 2px at 5% 12%, #fff, transparent),
-                radial-gradient(1px 1px at 8% 21%, #fff, transparent),
-                radial-gradient(1px 1px at 11% 29%, #fff, transparent),
-                radial-gradient(2px 2px at 14% 37%, #fff, transparent),
-                radial-gradient(1px 1px at 17% 45%, #fff, transparent),
-                radial-gradient(1px 1px at 20% 53%, #fff, transparent),
-                radial-gradient(2px 2px at 23% 61%, #fff, transparent),
-                radial-gradient(1px 1px at 26% 69%, #fff, transparent),
-                radial-gradient(1px 1px at 29% 77%, #fff, transparent),
-                radial-gradient(2px 2px at 32% 85%, #fff, transparent),
-                radial-gradient(1px 1px at 35% 93%, #fff, transparent),
-                radial-gradient(1px 1px at 38% 98%, #fff, transparent),
-                radial-gradient(2px 2px at 41% 8%, #fff, transparent),
-                radial-gradient(1px 1px at 44% 16%, #fff, transparent),
-                radial-gradient(1px 1px at 47% 24%, #fff, transparent),
-                radial-gradient(2px 2px at 50% 32%, #fff, transparent),
-                radial-gradient(1px 1px at 53% 40%, #fff, transparent),
-                radial-gradient(1px 1px at 56% 48%, #fff, transparent),
-                radial-gradient(2px 2px at 59% 56%, #fff, transparent),
-                radial-gradient(1px 1px at 62% 64%, #fff, transparent),
-                radial-gradient(1px 1px at 65% 72%, #fff, transparent),
-                radial-gradient(2px 2px at 68% 80%, #fff, transparent),
-                radial-gradient(1px 1px at 71% 88%, #fff, transparent),
-                radial-gradient(1px 1px at 74% 96%, #fff, transparent),
-                radial-gradient(2px 2px at 77% 4%, #fff, transparent),
-                radial-gradient(1px 1px at 80% 14%, #fff, transparent),
-                radial-gradient(1px 1px at 83% 22%, #fff, transparent),
-                radial-gradient(2px 2px at 86% 30%, #fff, transparent),
-                radial-gradient(1px 1px at 89% 38%, #fff, transparent),
-                radial-gradient(1px 1px at 92% 46%, #fff, transparent),
-                radial-gradient(2px 2px at 95% 54%, #fff, transparent),
-                radial-gradient(1px 1px at 98% 62%, #fff, transparent),
-                radial-gradient(1px 1px at 4% 70%, #fff, transparent),
-                radial-gradient(2px 2px at 9% 78%, #fff, transparent),
-                radial-gradient(1px 1px at 13% 86%, #fff, transparent),
-                radial-gradient(1px 1px at 18% 94%, #fff, transparent);
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            animation: glisten-a 4s ease-in-out infinite alternate;
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
+            pointer-events: none;
+        }
+
+        body::before {
+            background: radial-gradient(2px 2px at 10% 20%, #fff, transparent), radial-gradient(2px 2px at 30% 50%, #fff, transparent), radial-gradient(2px 2px at 70% 80%, #fff, transparent), radial-gradient(2px 2px at 90% 10%, #fff, transparent), radial-gradient(2px 2px at 50% 40%, #fff, transparent);
+            background-size: 300px 300px;
+            animation: glisten-a 4s infinite alternate;
         }
 
         body::after {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(1px 1px at 3% 5%, var(--primary-green), transparent),
-                radial-gradient(2px 2px at 7% 15%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 12% 25%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 16% 35%, var(--primary-green), transparent),
-                radial-gradient(2px 2px at 21% 45%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 25% 55%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 30% 65%, var(--primary-green), transparent),
-                radial-gradient(2px 2px at 34% 75%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 39% 85%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 43% 95%, var(--primary-green), transparent),
-                radial-gradient(2px 2px at 48% 7%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 52% 17%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 57% 27%, var(--primary-green), transparent),
-                radial-gradient(2px 2px at 61% 37%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 66% 47%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 70% 57%, var(--primary-green), transparent),
-                radial-gradient(2px 2px at 75% 67%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 79% 77%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 84% 87%, var(--primary-green), transparent),
-                radial-gradient(2px 2px at 88% 97%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 93% 9%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 97% 19%, var(--primary-green), transparent);
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            animation: glisten-b 5.5s ease-in-out infinite alternate;
-            z-index: -1;
+            background: radial-gradient(3px 3px at 15% 35%, var(--primary-green), transparent), radial-gradient(3px 3px at 85% 65%, var(--primary-green), transparent), radial-gradient(3px 3px at 45% 75%, var(--primary-green), transparent);
+            background-size: 400px 400px;
+            animation: glisten-b 6s infinite alternate;
         }
 
-        @keyframes glisten-a {
-            0% { opacity: 0.3; filter: brightness(1); }
-            30% { opacity: 1; filter: brightness(2); }
-            60% { opacity: 0.5; filter: brightness(1); }
-            100% { opacity: 0.9; filter: brightness(2.5); }
-        }
+        @keyframes glisten-a { 0% { opacity: 0.3; } 100% { opacity: 1; } }
+        @keyframes glisten-b { 0% { opacity: 1; } 100% { opacity: 0.4; } }
 
-        @keyframes glisten-b {
-            0% { opacity: 0.8; filter: brightness(2); }
-            40% { opacity: 0.3; filter: brightness(1); }
-            70% { opacity: 1; filter: brightness(3); }
-            100% { opacity: 0.4; filter: brightness(1); }
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .logo {
-            width: 80px;
-            border-radius: 15px;
-        }
-
-        .rich-header {
-            text-align: center;
-            font-weight: 900;
-            letter-spacing: 12px;
-            text-transform: uppercase;
-            margin: 20px 0;
-            text-shadow: 0 0 40px rgba(55, 179, 111, 0.8);
-            font-size: 2.5rem;
-        }
-
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 1; }
+        .logo { width: 80px; border-radius: 15px; margin-right: 15px; }
+        .rich-header { text-align: center; font-weight: 900; letter-spacing: 12px; text-transform: uppercase; margin: 20px 0; text-shadow: 0 0 40px rgba(55, 179, 111, 0.8); font-size: 2.5rem; }
+        
         .glass-panel {
             border: 1px solid var(--glass-border);
             background: var(--glass-bg);
@@ -158,229 +59,83 @@
             margin-bottom: 30px;
         }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            font-weight: 700;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-            color: var(--primary-green);
-        }
-
-        select,
-        input {
-            width: 100%;
-            padding: 12px;
-            background: #000;
-            border: 1px solid var(--glass-border);
-            color: white;
-            border-radius: 6px;
-            font-family: 'Montserrat', sans-serif;
-            box-sizing: border-box;
-        }
-
-        select:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-weight: 700; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 8px; color: var(--primary-green); text-transform: uppercase; }
+        
+        select, input {
+            width: 100%; padding: 12px; background: #000; border: 1px solid var(--glass-border); color: white;
+            border-radius: 6px; font-family: 'Montserrat', sans-serif; box-sizing: border-box; outline: none;
         }
 
         .btn-add {
-            width: 100%;
-            background: linear-gradient(135deg, #1a6b4a 0%, #37b36f 100%);
-            border: none;
-            color: white;
-            font-weight: 900;
-            letter-spacing: 3px;
-            padding: 1rem;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.3s;
-            text-transform: uppercase;
+            width: 100%; background: linear-gradient(135deg, #1a6b4a 0%, #37b36f 100%);
+            border: none; color: white; font-weight: 900; letter-spacing: 3px; padding: 1rem;
+            border-radius: 8px; cursor: pointer; transition: 0.3s; text-transform: uppercase;
         }
 
-        .btn-add:hover:not(:disabled) {
-            box-shadow: 0 0 20px rgba(55, 179, 111, 0.5);
-            background: #37b36f;
-        }
-
-        .btn-add:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
+        .btn-add:hover:not(:disabled) { box-shadow: 0 0 20px rgba(55, 179, 111, 0.5); transform: translateY(-2px); }
 
         .item-card {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            border: 1px solid var(--glass-border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background: rgba(255, 255, 255, 0.03); padding: 20px; border-radius: 10px; margin-bottom: 10px;
+            border: 1px solid var(--glass-border); display: flex; justify-content: space-between; align-items: center;
         }
 
-        .bold-currency {
-            font-family: 'Inter', sans-serif;
-            font-weight: 900;
-            color: var(--primary-green);
-        }
-
-        .btn-del {
-            background: transparent;
-            border: none;
-            color: #ff4b4b;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0 10px;
-        }
+        .bold-currency { font-family: 'Inter', sans-serif; font-weight: 900; color: var(--primary-green); }
+        .btn-del { background: transparent; border: none; color: #ff4b4b; font-size: 1.5rem; cursor: pointer; }
 
         .valuation-card {
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 40px;
-            border-radius: 20px;
-            background: rgba(55, 179, 111, 0.1);
-            text-align: center;
-            margin-top: 40px;
-            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2); padding: 40px; border-radius: 20px;
+            background: rgba(55, 179, 111, 0.1); text-align: center; margin-top: 40px; backdrop-filter: blur(10px);
         }
 
-        .val-title {
-            letter-spacing: 5px;
-            color: var(--primary-green);
-            font-weight: 700;
-            margin: 0;
-        }
-
-        .val-main {
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin: 10px 0;
-        }
-
-        .val-grid {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            border-top: 1px solid var(--glass-border);
-            padding-top: 20px;
-            margin-top: 20px;
-        }
-
-        .clear-btn {
-            background: transparent;
-            color: white;
-            border: 1px solid var(--glass-border);
-            padding: 10px;
-            width: 100%;
-            margin-top: 20px;
-            cursor: pointer;
-            border-radius: 8px;
-        }
-
-        .loading-message,
-        .error-message,
-        .info-message {
-            text-align: center;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 10px 0;
-        }
-
-        .error-message {
-            background: rgba(255, 75, 75, 0.1);
-            border: 1px solid #ff4b4b;
-            color: #ff4b4b;
-        }
-
-        .loading-message {
-            background: rgba(55, 179, 111, 0.1);
-            border: 1px solid var(--primary-green);
-        }
-        
-        .info-message {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid var(--glass-border);
-            color: #fff;
-        }
-        
-        .steps-list {
-            text-align: left;
-            margin-top: 15px;
-            padding-left: 20px;
-        }
-        
-        .steps-list li {
-            margin-bottom: 10px;
-            color: var(--primary-green);
-        }
+        .val-main { font-size: 3.5rem; font-weight: 900; margin: 10px 0; }
+        .val-grid { display: flex; justify-content: center; gap: 40px; border-top: 1px solid var(--glass-border); padding-top: 20px; margin-top: 20px; }
+        .clear-btn { background: transparent; color: white; border: 1px solid var(--glass-border); padding: 10px; width: 100%; margin-top: 20px; cursor: pointer; border-radius: 8px; }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <div style="display: flex; align-items: center;">
-            <span><img src="./wlogo.png" alt="Logo" class="logo"></span>
-            <span style="color: var(--primary-green); font-size: 4.9rem; font-weight:900;">Bayut Studios</span>
+        <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+            <img src="./wlogo.png" alt="Logo" class="logo">
+            <span style="color: var(--primary-green); font-size: 3rem; font-weight:900;">Bayut Studios</span>
         </div>
         <h1 class="rich-header">Price Calculator</h1>
 
         <div class="glass-panel">
-            <label style="color: white; margin: 10px 0 50px 0; text-align: center;">CONFIGURE YOUR PROJECT SCOPE</label>
+            <h2 style="color: white; font-size: 0.9rem; letter-spacing: 4px; text-align: center; margin-bottom: 30px; font-weight: 200;">CONFIGURE YOUR PROJECT SCOPE</h2>
+            <div id="loadingMessage" class="loading-message" style="text-align:center; color: var(--primary-green);">Connecting to Engine...</div>
             
-            <div id="loadingMessage" class="loading-message" style="display: none;">
-                ⏳ Loading data from Google Sheet...
+            <div id="formFields" style="display: none;">
+                <div class="form-group">
+                    <label>CATEGORY</label>
+                    <select id="categorySelect" onchange="updateProductList()"></select>
+                </div>
+                <div class="form-group">
+                    <label>PRODUCT SERVICE</label>
+                    <select id="productSelect"></select>
+                </div>
+                <div class="form-group">
+                    <label>UNITS REQUIRED</label>
+                    <input type="number" id="unitsInput" value="1" min="1">
+                </div>
+                <button class="btn-add" onclick="addToCart()" id="addButton">Add to Quotation</button>
             </div>
-            
-            <div id="errorMessage" class="error-message" style="display: none;"></div>
-            
-            <div id="publishInstructions" class="info-message">
-                <strong>📋 SETUP INSTRUCTIONS:</strong>
-                <ol class="steps-list">
-                    <li>Open your Google Sheet: <strong>File → Share → Publish to web</strong></li>
-                    <li>Click <strong>"Publish"</strong> button</li>
-                    <li>Copy this ID: <code style="background:#333; padding:2px 5px;">1qvBKlYH7q4dXsu7tEh9OLnKSydfONNRzGa-xjUYLB0g</code></li>
-                    <li>Make sure your sheet has these columns: Product Category, Product, Total Price (PKR), Total Price (SAR), Total Price (AED)</li>
-                    <li>Refresh this page after publishing</li>
-                </ol>
-                <button onclick="loadSheetData()" style="background:var(--primary-green); border:none; color:white; padding:10px 20px; border-radius:5px; cursor:pointer; margin-top:10px;">🔄 Retry Loading</button>
-            </div>
-            
-            <div class="form-group">
-                <label>CATEGORY</label>
-                <select id="categorySelect" onchange="updateProductList()" disabled>
-                    <option>Waiting for data...</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>PRODUCT SERVICE</label>
-                <select id="productSelect" disabled>
-                    <option>Waiting for data...</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>UNITS REQUIRED</label>
-                <input type="number" id="unitsInput" value="1" min="1">
-            </div>
-            <button class="btn-add" onclick="addToCart()" id="addButton" disabled>Add to Quotation</button>
         </div>
 
-        <h3 id="scopeHeader" style="display:none;">CURRENT SCOPE</h3>
+        <h3 id="scopeHeader" style="display:none; letter-spacing: 5px; font-weight: 200; text-align: center;">CURRENT SCOPE</h3>
         <div id="cartItems"></div>
 
         <div id="valuationCard" class="valuation-card" style="display:none;">
-            <p class="val-title">✦ TOTAL VALUATION ✦</p>
+            <p style="letter-spacing: 5px; color: var(--primary-green); font-weight: 700;">✦ TOTAL VALUATION ✦</p>
             <h1 class="val-main" id="totalPKR">PKR 0</h1>
             <div class="val-grid">
                 <div>
-                    <p style="color: var(--primary-green); font-size: 0.9rem; font-weight:900;">SAR</p>
+                    <p style="color: var(--primary-green); font-size: 0.8rem; font-weight:900; letter-spacing: 2px;">SAR</p>
                     <h2 id="totalSAR" style="margin:0;">0.00</h2>
                 </div>
                 <div>
-                    <p style="color: var(--primary-green); font-size: 0.9rem; font-weight:900;">AED</p>
+                    <p style="color: var(--primary-green); font-size: 0.8rem; font-weight:900; letter-spacing: 2px;">AED</p>
                     <h2 id="totalAED" style="margin:0;">0.00</h2>
                 </div>
             </div>
@@ -391,229 +146,136 @@
     <script>
         let cart = [];
         let serviceData = [];
-
-        // Your Google Sheet ID - this is correct
         const SHEET_ID = '1qvBKlYH7q4dXsu7tEh9OLnKSydfONNRzGa-xjUYLB0g';
-        
-        // Fallback sample data in case sheet isn't published
-        const SAMPLE_DATA = [
-            { category: "Photography", name: "Event Photography", pkr: 50000, sar: 675, aed: 660 },
-            { category: "Photography", name: "Product Photography", pkr: 25000, sar: 337, aed: 330 },
-            { category: "Videography", name: "Social Media Reel", pkr: 15000, sar: 202, aed: 198 },
-            { category: "Videography", name: "Corporate Video", pkr: 120000, sar: 1620, aed: 1585 },
-            { category: "Editing", name: "Photo Editing", pkr: 5000, sar: 67, aed: 66 },
-            { category: "Editing", name: "Video Editing", pkr: 20000, sar: 270, aed: 264 },
-            { category: "Marketing", name: "Social Media Package", pkr: 35000, sar: 472, aed: 462 }
-        ];
+
+        // 1. IMPROVED CSV PARSER (Handles currency commas correctly)
+        function parseCSV(text) {
+            const lines = text.split('\n');
+            return lines.map(line => {
+                const result = [];
+                let cell = '';
+                let inQuotes = false;
+                for (let char of line) {
+                    if (char === '"') inQuotes = !inQuotes;
+                    else if (char === ',' && !inQuotes) {
+                        result.push(cell.trim());
+                        cell = '';
+                    } else cell += char;
+                }
+                result.push(cell.trim());
+                return result;
+            });
+        }
+
+        // 2. CURRENCY CLEANER
+        function cleanValue(val) {
+            if (!val) return 0;
+            return parseFloat(val.replace(/[^\d.]/g, '')) || 0;
+        }
 
         async function loadSheetData() {
-            const loadingEl = document.getElementById('loadingMessage');
-            const errorEl = document.getElementById('errorMessage');
-            const instructionsEl = document.getElementById('publishInstructions');
-            const categorySelect = document.getElementById('categorySelect');
-            const productSelect = document.getElementById('productSelect');
-            const addButton = document.getElementById('addButton');
-
             try {
-                loadingEl.style.display = 'block';
-                errorEl.style.display = 'none';
-                instructionsEl.style.display = 'none';
+                const response = await fetch(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=0`);
+                const csvText = await response.text();
+                const rows = parseCSV(csvText);
+                const headers = rows[0].map(h => h.toLowerCase());
 
-                // CORRECT URL: Using the JSON endpoint which is more reliable
-                const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Sheet1?key=YOUR_API_KEY`);
-                
-                // Since we don't have an API key, this will fail - let's use a different approach
-                // For now, let's use a proxy service that can access public sheets
-                
-                // Better approach: Use a CORS proxy with the CSV export
-                const proxyUrl = 'https://api.allorigins.win/raw?url=';
-                const sheetUrl = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv`;
-                
-                const proxyResponse = await fetch(proxyUrl + encodeURIComponent(sheetUrl));
-                
-                if (!proxyResponse.ok) {
-                    throw new Error('Could not access sheet. Using sample data instead.');
-                }
+                // Find column indices
+                const idx = {
+                    cat: headers.findIndex(h => h.includes('category')),
+                    prod: headers.findIndex(h => h.includes('product') && !h.includes('category')),
+                    pkr: headers.findIndex(h => h.includes('pkr')),
+                    sar: headers.findIndex(h => h.includes('sar')),
+                    aed: headers.findIndex(h => h.includes('aed'))
+                };
 
-                const csvText = await proxyResponse.text();
-                
-                // Parse CSV
-                const rows = csvText.split('\n').map(row => {
-                    // Simple CSV parsing
-                    return row.split(',').map(cell => cell.replace(/^"|"$/g, '').trim());
-                });
+                serviceData = rows.slice(1).map(row => ({
+                    category: row[idx.cat],
+                    name: row[idx.prod],
+                    pkr: cleanValue(row[idx.pkr]),
+                    sar: cleanValue(row[idx.sar]),
+                    aed: cleanValue(row[idx.aed])
+                })).filter(item => item.name && item.pkr > 0);
 
-                if (rows.length < 2) {
-                    throw new Error('Sheet is empty');
-                }
-
-                // Map columns based on your schema
-                serviceData = rows.slice(1)
-                    .filter(row => row.length >= 8 && row[0] && row[1])
-                    .map(row => ({
-                        category: row[0] || '',
-                        name: row[1] || '',
-                        pkr: parseFloat(row[4]) || 0,  // Column E - Total Price (PKR)
-                        sar: parseFloat(row[6]) || 0,  // Column G - Total Price (SAR)
-                        aed: parseFloat(row[7]) || 0   // Column H - Total Price (AED)
-                    }))
-                    .filter(item => item.category && item.name && (item.pkr > 0 || item.sar > 0 || item.aed > 0));
-
-                if (serviceData.length === 0) {
-                    throw new Error('No valid data found. Using sample data.');
-                }
-
-                // Success! Enable controls
-                enableControls();
-                loadingEl.style.display = 'none';
-                init();
-
-            } catch (error) {
-                console.warn('Error loading sheet, using sample data:', error);
-                
-                // Use sample data as fallback
-                serviceData = SAMPLE_DATA;
-                
-                // Show warning but enable controls
-                loadingEl.style.display = 'none';
-                errorEl.style.display = 'block';
-                errorEl.innerHTML = `⚠️ Using sample data. To use your Google Sheet: ${error.message}`;
-                
-                enableControls();
-                init();
+                document.getElementById('loadingMessage').style.display = 'none';
+                document.getElementById('formFields').style.display = 'block';
+                initDropdowns();
+            } catch (e) {
+                document.getElementById('loadingMessage').innerHTML = "Engine offline. Please check Sheet publication.";
             }
         }
 
-        function enableControls() {
-            document.getElementById('categorySelect').disabled = false;
-            document.getElementById('productSelect').disabled = false;
-            document.getElementById('addButton').disabled = false;
-        }
-
-        function init() {
+        function initDropdowns() {
             const catSelect = document.getElementById('categorySelect');
-            const categories = [...new Set(serviceData.map(item => item.category))];
-
-            catSelect.innerHTML = '<option value="">Select a category...</option>';
-
-            categories.forEach(cat => {
-                let opt = document.createElement('option');
-                opt.value = cat;
-                opt.innerHTML = cat;
-                catSelect.appendChild(opt);
-            });
+            const categories = [...new Set(serviceData.map(i => i.category))];
+            catSelect.innerHTML = categories.map(c => `<option value="${c}">${c}</option>`).join('');
+            updateProductList();
         }
 
         function updateProductList() {
             const cat = document.getElementById('categorySelect').value;
             const prodSelect = document.getElementById('productSelect');
-            
-            if (!cat) {
-                prodSelect.innerHTML = '<option value="">Select a category first...</option>';
-                prodSelect.disabled = true;
-                return;
-            }
-            
-            prodSelect.disabled = false;
-            prodSelect.innerHTML = '<option value="">Select a product...</option>';
-
-            serviceData.filter(i => i.category === cat).forEach(prod => {
-                let opt = document.createElement('option');
-                opt.value = prod.name;
-                opt.innerHTML = `${prod.name} - PKR ${prod.pkr.toLocaleString()}`;
-                prodSelect.appendChild(opt);
-            });
+            const products = serviceData.filter(i => i.category === cat);
+            prodSelect.innerHTML = products.map(p => `<option value="${p.name}">${p.name}</option>`).join('');
         }
 
         function addToCart() {
-            const prodName = document.getElementById('productSelect').value;
+            const name = document.getElementById('productSelect').value;
             const units = parseInt(document.getElementById('unitsInput').value);
-            
-            if (!prodName) {
-                alert('Please select a product');
-                return;
-            }
-            
-            const itemData = serviceData.find(i => i.name === prodName);
+            const data = serviceData.find(i => i.name === name);
+            const existing = cart.find(i => i.name === name);
 
-            const existing = cart.find(i => i.name === prodName);
-            if (existing) {
-                existing.units += units;
-            } else {
-                cart.push({
-                    name: prodName,
-                    units: units,
-                    pkr: itemData.pkr,
-                    sar: itemData.sar,
-                    aed: itemData.aed
-                });
-            }
+            if (existing) existing.units += units;
+            else cart.push({ ...data, units });
+            
             renderCart();
         }
 
         function renderCart() {
             const container = document.getElementById('cartItems');
-            const valuationCard = document.getElementById('valuationCard');
+            const valCard = document.getElementById('valuationCard');
             const scopeHeader = document.getElementById('scopeHeader');
-            container.innerHTML = "";
-
+            
             if (cart.length === 0) {
-                valuationCard.style.display = "none";
-                scopeHeader.style.display = "none";
+                valCard.style.display = scopeHeader.style.display = "none";
+                container.innerHTML = "";
                 return;
             }
 
-            valuationCard.style.display = "block";
-            scopeHeader.style.display = "block";
+            valCard.style.display = scopeHeader.style.display = "block";
+            let tPKR = 0, tSAR = 0, tAED = 0;
 
-            let totalPKR = 0, totalSAR = 0, totalAED = 0;
+            container.innerHTML = cart.map((item, i) => {
+                const p = item.pkr * item.units;
+                const s = item.sar * item.units;
+                const a = item.aed * item.units;
+                tPKR += p; tSAR += s; tAED += a;
 
-            cart.forEach((item, index) => {
-                const subPKR = item.pkr * item.units;
-                const subSAR = item.sar * item.units;
-                const subAED = item.aed * item.units;
+                return `
+                    <div class="item-card">
+                        <div>
+                            <b>${item.name} (x${item.units})</b>
+                            <p style="font-size:0.8rem; margin-top:5px; opacity:0.8;">
+                                <span class="bold-currency">SAR ${s.toLocaleString()}</span> | 
+                                <span class="bold-currency">AED ${a.toLocaleString()}</span>
+                            </p>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:15px;">
+                            <b style="font-size:1.2rem;">PKR ${p.toLocaleString()}</b>
+                            <button class="btn-del" onclick="removeItem(${i})">×</button>
+                        </div>
+                    </div>`;
+            }).join('');
 
-                totalPKR += subPKR;
-                totalSAR += subSAR;
-                totalAED += subAED;
-
-                container.innerHTML += `
-                <div class="item-card">
-                    <div>
-                        <b style="font-size: 1.1rem;">${item.name} (x${item.units})</b>
-                        <p style="margin:5px 0 0 0; font-size:0.9rem;">
-                            <span class="bold-currency">SAR ${subSAR.toLocaleString()}</span> | 
-                            <span class="bold-currency">AED ${subAED.toLocaleString()}</span>
-                        </p>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 15px;">
-                        <b style="font-size: 1.2rem;">PKR ${subPKR.toLocaleString()}</b>
-                        <button class="btn-del" onclick="removeItem(${index})">×</button>
-                    </div>
-                </div>
-            `;
-            });
-
-            document.getElementById('totalPKR').innerText = `PKR ${totalPKR.toLocaleString()}`;
-            document.getElementById('totalSAR').innerText = totalSAR.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            document.getElementById('totalAED').innerText = totalAED.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.getElementById('totalPKR').innerText = `PKR ${tPKR.toLocaleString()}`;
+            document.getElementById('totalSAR').innerText = tSAR.toLocaleString(undefined, {minimumFractionDigits: 2});
+            document.getElementById('totalAED').innerText = tAED.toLocaleString(undefined, {minimumFractionDigits: 2});
         }
 
-        function removeItem(index) {
-            cart.splice(index, 1);
-            renderCart();
-        }
+        function removeItem(i) { cart.splice(i, 1); renderCart(); }
+        function clearCart() { cart = []; renderCart(); }
 
-        function clearCart() {
-            cart = [];
-            renderCart();
-        }
-
-        // Load data when page loads
-        window.onload = function() {
-            loadSheetData();
-        };
+        loadSheetData();
     </script>
 </body>
-
 </html>
