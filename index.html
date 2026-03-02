@@ -1,114 +1,275 @@
-import streamlit as st
-from streamlit_gsheets import GSheetsConnection
-import pandas as pd
-
-# 1. Page Configuration & Ultra-Dark Starry Theme
-st.set_page_config(page_title="Bayut Studios | Price Calculator", layout="centered")
-
-st.markdown("""
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bayut Studios | Price Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;700;900&display=swap');
-    
-    .stApp { background-color: #000000; color: white !important; font-family: 'Montserrat', sans-serif; }
-    
-    /* Force Labels to be White and Visible */
-    label, .stMarkdown p, .stExpander p { 
-        color: #FFFFFF !important; 
-        font-weight: 700 !important; 
-        text-transform: uppercase; 
-        letter-spacing: 2px;
-    }
+        :root {
+            --primary-green: #37b36f;
+            --dark-bg: #050505;
+            --card-bg: rgba(20, 20, 20, 0.8);
+        }
 
-    /* Massive Starry Background */
-    .stApp::before {
-        content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-        background-image: 
-            radial-gradient(3px 3px at 10% 10%, #fff, transparent),
-            radial-gradient(4px 4px at 20% 50%, #37b36f, transparent),
-            radial-gradient(3px 3px at 40% 30%, #fff, transparent),
-            radial-gradient(5px 5px at 60% 80%, #fff, transparent),
-            radial-gradient(4px 4px at 80% 20%, #37b36f, transparent);
-        background-size: 400px 400px;
-        animation: stars-move 100s linear infinite;
-        z-index: -1;
-    }
-    @keyframes stars-move { from { background-position: 0 0; } to { background-position: 0 -10000px; } }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark-bg);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
 
-    /* Dropdown UI Fixes */
-    div[data-baseweb="select"] > div { background-color: #111 !important; color: white !important; border: 1px solid #37b36f !important; }
+        /* --- Starry Background Animation --- */
+        #stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 10px white; }
+        }
+
+        /* --- UI Layout --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .logo {
+            max-width: 200px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px rgba(55, 179, 111, 0.3));
+        }
+
+        h1 {
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            background: linear-gradient(to right, #fff, var(--primary-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .calculator-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            color: var(--primary-green);
+        }
+
+        select, input {
+            width: 100%;
+            padding: 15px;
+            background: #111;
+            border: 1px solid #333;
+            color: white;
+            border-radius: 8px;
+            font-family: 'Montserrat';
+            transition: 0.3s;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 10px rgba(55, 179, 111, 0.2);
+        }
+
+        /* --- Result Section --- */
+        .result-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+            border-top: 1px solid #333;
+            padding-top: 30px;
+        }
+
+        .price-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .price-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            opacity: 0.6;
+            margin-bottom: 5px;
+        }
+
+        .price-value {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: white;
+        }
+
+        .highlight {
+            color: var(--primary-green);
+        }
     </style>
-    """, unsafe_allow_html=True)
+</head>
+<body>
 
-# 2. Header and Logo
-st.image("https://i.ibb.co/LzsV9Z6j/f774cc00-9f2e-4130-9644-1bddb2d6ae50.jpg")
-st.markdown("<h1 style='text-align:center; letter-spacing:10px; font-weight:900;'>PRICE CALCULATOR</h1>", unsafe_allow_html=True)
+    <div id="stars-container"></div>
 
-# 3. Initialization (Fixes 'list' vs 'dict' error)
-if 'cart' not in st.session_state or isinstance(st.session_state.cart, list):
-    st.session_state.cart = {} # We use a dictionary to allow smart merging
+    <div class="container">
+        <img src="logo.png" alt="Bayut Studios" class="logo">
+        <h1>Price Calculator</h1>
 
-# 4. Data Connection
-url = "https://docs.google.com/spreadsheets/d/1qvBKlYH7q4dXsu7tEh9OLnKSydfONNRzGa-xjUYLB0g/edit?usp=sharing"
-try:
-    conn = st.connection("gsheets", type=GSheetsConnection)
-    df = conn.read(spreadsheet=url, ttl="1m")
-    df.columns = [c.strip() for c in df.columns] # Remove accidental spaces
+        <div class="calculator-card">
+            <div class="form-group">
+                <label>Product Category</label>
+                <select id="categorySelect" onchange="updateProducts()">
+                    <option value="">Select Category</option>
+                </select>
+            </div>
 
-    # Define exact column names from your data
-    col_cat = "Product Category"
-    col_prod = "Product"
-    col_pkr = "Total Price (PKR)"
-    col_sar = "Total Price (SAR)"
-    col_aed = "Total Price (AED)"
+            <div class="form-group">
+                <label>Select Product</label>
+                <select id="productSelect" onchange="calculatePrice()">
+                    <option value="">Select a Category first</option>
+                </select>
+            </div>
 
-    # Numeric Cleaning Utility
-    def clean_currency(val):
-        if isinstance(val, str):
-            return float(val.replace('PKR','').replace('SAR','').replace('dh','').replace(',','').strip())
-        return float(val)
+            <div class="form-group">
+                <label>Units Required</label>
+                <input type="number" id="unitInput" value="1" min="1" oninput="calculatePrice()">
+            </div>
 
-    # 5. Interface
-    with st.expander("CONFIGURE YOUR PROJECT SCOPE", expanded=True):
-        category = st.selectbox("CATEGORY", df[col_cat].unique())
-        sub_df = df[df[col_cat] == category]
-        product = st.selectbox("PRODUCT SERVICE", sub_df[col_prod].unique())
-        units = st.number_input("UNITS REQUIRED", min_value=1, value=1)
-        
-        if st.button("ADD TO QUOTATION"):
-            row = sub_df[sub_df[col_prod] == product].iloc[0]
-            if product in st.session_state.cart:
-                st.session_state.cart[product]['units'] += units
-            else:
-                st.session_state.cart[product] = {
-                    "units": units,
-                    "pkr_unit": clean_currency(row[col_pkr]),
-                    "sar_unit": clean_currency(row[col_sar]),
-                    "aed_unit": clean_currency(row[col_aed])
-                }
-            st.rerun()
-
-    # 6. Cart Display
-    if st.session_state.cart:
-        st.markdown("---")
-        t_pkr, t_sar, t_aed = 0, 0, 0
-        for name, data in st.session_state.cart.items():
-            sub_pkr = data['units'] * data['pkr_unit']
-            t_pkr += sub_pkr
-            t_sar += data['units'] * data['sar_unit']
-            t_aed += data['units'] * data['aed_unit']
-            
-            st.write(f"**{name}** (x{data['units']}) — PKR {sub_pkr:,.0f}")
-
-        # Total Valuation Card
-        st.markdown(f"""
-            <div style="border: 2px solid #37b36f; padding: 30px; border-radius: 15px; background: rgba(55,179,111,0.1); text-align: center; margin-top: 20px;">
-                <h1 style="color: white; font-size: 3rem;">PKR {t_pkr:,.0f}</h1>
-                <div style="display: flex; justify-content: center; gap: 40px; border-top: 1px solid #444; padding-top: 15px;">
-                    <div><p style="color: #37b36f;">SAR</p><h3 style="color:white;">{t_sar:,.2f}</h3></div>
-                    <div><p style="color: #37b36f;">AED</p><h3 style="color:white;">{t_aed:,.2f}</h3></div>
+            <div class="result-grid">
+                <div class="price-box">
+                    <div class="price-label">Total PKR</div>
+                    <div class="price-value highlight" id="pricePKR">0</div>
+                </div>
+                <div class="price-box">
+                    <div class="price-label">Total USD</div>
+                    <div class="price-value" id="priceUSD">$0</div>
+                </div>
+                <div class="price-box">
+                    <div class="price-label">Total SAR</div>
+                    <div class="price-value" id="priceSAR">0</div>
+                </div>
+                <div class="price-box">
+                    <div class="price-label">Total AED</div>
+                    <div class="price-value" id="priceAED">0</div>
                 </div>
             </div>
-            """, unsafe_allow_html=True)
+        </div>
+    </div>
 
-except Exception as e:
-    st.error(f"Engine Offline: {e}")
+    <script>
+        let masterData = [];
+
+        // 1. Generate Stars
+        const container = document.getElementById('stars-container');
+        for (let i = 0; i < 150; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 3 + 'px';
+            star.style.width = size;
+            star.style.height = size;
+            star.style.top = Math.random() * 100 + '%';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.setProperty('--duration', Math.random() * 3 + 2 + 's');
+            container.appendChild(star);
+        }
+
+        // 2. Load Data from CSV
+        // In GitHub Pages, 'data.csv' should be in the same repo
+        Papa.parse("data.csv", {
+            download: true,
+            header: true,
+            complete: function(results) {
+                masterData = results.data;
+                populateCategories();
+            }
+        });
+
+        function populateCategories() {
+            const categories = [...new Set(masterData.map(item => item['Product Category']))];
+            const select = document.getElementById('categorySelect');
+            categories.forEach(cat => {
+                if(cat) {
+                    let opt = document.createElement('option');
+                    opt.value = cat;
+                    opt.innerHTML = cat;
+                    select.appendChild(opt);
+                }
+            });
+        }
+
+        function updateProducts() {
+            const category = document.getElementById('categorySelect').value;
+            const productSelect = document.getElementById('productSelect');
+            productSelect.innerHTML = '<option value="">Select Product</option>';
+            
+            const filtered = masterData.filter(item => item['Product Category'] === category);
+            filtered.forEach(item => {
+                let opt = document.createElement('option');
+                opt.value = item['Product'];
+                opt.innerHTML = item['Product'];
+                productSelect.appendChild(opt);
+            });
+        }
+
+        function calculatePrice() {
+            const productName = document.getElementById('productSelect').value;
+            const units = document.getElementById('unitInput').value || 1;
+            const product = masterData.find(item => item['Product'] === productName);
+
+            if (product) {
+                // Remove commas from strings to treat as numbers
+                const cleanPrice = (val) => parseFloat(val.replace(/[^\d.]/g, '')) || 0;
+                
+                const pkr = cleanPrice(product['Total Cost (PKR)']) * units;
+                const usd = cleanPrice(product['Total Price (USD)']) * units;
+                const sar = cleanPrice(product['Total Price (SAR)']) * units;
+                const aed = cleanPrice(product['Total Price (AED)']) * units;
+
+                document.getElementById('pricePKR').innerText = pkr.toLocaleString();
+                document.getElementById('priceUSD').innerText = '$' + usd.toLocaleString();
+                document.getElementById('priceSAR').innerText = sar.toLocaleString();
+                document.getElementById('priceAED').innerText = aed.toLocaleString();
+            }
+        }
+    </script>
+</body>
+</html>
