@@ -16,266 +16,218 @@
             background-color: #000000;
             color: white;
             font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            min-height: 100vh;
+            margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden;
         }
 
-        /* STAR LAYERS */
-        body::before, body::after, .extra-stars {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        body::before {
-            background: radial-gradient(2px 2px at 10% 20%, #fff, transparent), radial-gradient(2px 2px at 30% 50%, #fff, transparent), radial-gradient(2px 2px at 70% 80%, #fff, transparent), radial-gradient(2px 2px at 90% 10%, #fff, transparent), radial-gradient(2px 2px at 50% 40%, #fff, transparent);
-            background-size: 300px 300px;
-            animation: glisten-a 4s infinite alternate;
-        }
-
-        body::after {
-            background: radial-gradient(3px 3px at 15% 35%, var(--primary-green), transparent), radial-gradient(3px 3px at 85% 65%, var(--primary-green), transparent), radial-gradient(3px 3px at 45% 75%, var(--primary-green), transparent);
-            background-size: 400px 400px;
-            animation: glisten-b 6s infinite alternate;
-        }
-
-        @keyframes glisten-a { 0% { opacity: 0.3; } 100% { opacity: 1; } }
-        @keyframes glisten-b { 0% { opacity: 1; } 100% { opacity: 0.4; } }
-
-        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 1; }
-        .logo { width: 80px; border-radius: 15px; margin-right: 15px; }
-        .rich-header { text-align: center; font-weight: 900; letter-spacing: 12px; text-transform: uppercase; margin: 20px 0; text-shadow: 0 0 40px rgba(55, 179, 111, 0.8); font-size: 2.5rem; }
+        /* MASSIVE STAR ENGINE (Fixed) */
+        .stars-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+        .star { position: absolute; background: white; border-radius: 50%; opacity: 0.8; animation: glisten var(--d) ease-in-out infinite alternate; }
+        .star.green { background: var(--primary-green); box-shadow: 0 0 10px var(--primary-green); }
         
-        .glass-panel {
-            border: 1px solid var(--glass-border);
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 30px;
-        }
+        @keyframes glisten { 0% { opacity: 0.2; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1.2); } }
 
-        .form-group { margin-bottom: 20px; }
-        label { display: block; font-weight: 700; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 8px; color: var(--primary-green); text-transform: uppercase; }
+        .container { max-width: 850px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 1; }
+        .rich-header { text-align: center; font-weight: 900; letter-spacing: 12px; text-transform: uppercase; margin: 20px 0; text-shadow: 0 0 40px rgba(55, 179, 111, 0.8); font-size: 2.8rem; }
         
-        select, input {
-            width: 100%; padding: 12px; background: #000; border: 1px solid var(--glass-border); color: white;
-            border-radius: 6px; font-family: 'Montserrat', sans-serif; box-sizing: border-box; outline: none;
-        }
+        .glass-panel { border: 1px solid var(--glass-border); background: var(--glass-bg); backdrop-filter: blur(20px); border-radius: 12px; padding: 30px; margin-bottom: 30px; }
+        label { display: block; font-weight: 700; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 10px; color: var(--primary-green); text-transform: uppercase; }
+        
+        select, input { width: 100%; padding: 14px; background: #000; border: 1px solid var(--glass-border); color: white; border-radius: 8px; font-family: 'Montserrat', sans-serif; box-sizing: border-box; outline: none; margin-bottom: 20px; transition: 0.3s; }
+        select:focus, input:focus { border-color: var(--primary-green); background: #050505; }
 
-        .btn-add {
-            width: 100%; background: linear-gradient(135deg, #1a6b4a 0%, #37b36f 100%);
-            border: none; color: white; font-weight: 900; letter-spacing: 3px; padding: 1rem;
-            border-radius: 8px; cursor: pointer; transition: 0.3s; text-transform: uppercase;
-        }
+        .btn-add { width: 100%; background: linear-gradient(135deg, #1a6b4a 0%, #37b36f 100%); border: none; color: white; font-weight: 900; letter-spacing: 3px; padding: 1.2rem; border-radius: 10px; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
+        .btn-add:hover { background: var(--primary-green); box-shadow: 0 10px 30px rgba(55, 179, 111, 0.4); transform: translateY(-2px); }
 
-        .btn-add:hover:not(:disabled) { box-shadow: 0 0 20px rgba(55, 179, 111, 0.5); transform: translateY(-2px); }
+        .item-card { background: rgba(255, 255, 255, 0.04); padding: 25px; border-radius: 15px; margin-bottom: 12px; border: 1px solid var(--glass-border); display: flex; justify-content: space-between; align-items: center; border-left: 6px solid var(--primary-green); }
+        .bold-currency { font-family: 'Inter', sans-serif; font-weight: 900; color: var(--primary-green); font-size: 1.1rem; }
+        .btn-del { background: transparent; border: none; color: #ff4b4b; font-size: 2rem; cursor: pointer; transition: 0.2s; }
+        .btn-del:hover { transform: scale(1.2); filter: brightness(1.5); }
 
-        .item-card {
-            background: rgba(255, 255, 255, 0.03); padding: 20px; border-radius: 10px; margin-bottom: 10px;
-            border: 1px solid var(--glass-border); display: flex; justify-content: space-between; align-items: center;
-        }
-
-        .bold-currency { font-family: 'Inter', sans-serif; font-weight: 900; color: var(--primary-green); }
-        .btn-del { background: transparent; border: none; color: #ff4b4b; font-size: 1.5rem; cursor: pointer; }
-
-        .valuation-card {
-            border: 1px solid rgba(255, 255, 255, 0.2); padding: 40px; border-radius: 20px;
-            background: rgba(55, 179, 111, 0.1); text-align: center; margin-top: 40px; backdrop-filter: blur(10px);
-        }
-
-        .val-main { font-size: 3.5rem; font-weight: 900; margin: 10px 0; }
-        .val-grid { display: flex; justify-content: center; gap: 40px; border-top: 1px solid var(--glass-border); padding-top: 20px; margin-top: 20px; }
-        .clear-btn { background: transparent; color: white; border: 1px solid var(--glass-border); padding: 10px; width: 100%; margin-top: 20px; cursor: pointer; border-radius: 8px; }
+        .valuation-card { border: 2px solid var(--primary-green); padding: 45px; border-radius: 20px; background: rgba(55, 179, 111, 0.08); text-align: center; margin-top: 40px; backdrop-filter: blur(15px); }
+        .val-main { font-size: 4rem; font-weight: 900; margin: 10px 0; color: white; }
     </style>
 </head>
 
 <body>
+    <div class="stars-container" id="starContainer"></div>
+    
     <div class="container">
-        <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
-            <img src="./wlogo.png" alt="Logo" class="logo">
-            <span style="color: var(--primary-green); font-size: 3rem; font-weight:900;">Bayut Studios</span>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+            <img src="./wlogo.png" alt="Logo" style="width: 80px; border-radius: 12px;">
+            <span style="color: var(--primary-green); font-size: 3.5rem; font-weight:900;">Bayut Studios</span>
         </div>
         <h1 class="rich-header">Price Calculator</h1>
 
         <div class="glass-panel">
-            <h2 style="color: white; font-size: 0.9rem; letter-spacing: 4px; text-align: center; margin-bottom: 30px; font-weight: 200;">CONFIGURE YOUR PROJECT SCOPE</h2>
-            <div id="loadingMessage" class="loading-message" style="text-align:center; color: var(--primary-green);">Connecting to Engine...</div>
+            <h2 id="engineStatus" style="color: white; font-size: 0.8rem; letter-spacing: 5px; text-align: center; margin-bottom: 30px; font-weight: 200;">CONNECTING TO ENGINE...</h2>
             
-            <div id="formFields" style="display: none;">
-                <div class="form-group">
-                    <label>CATEGORY</label>
-                    <select id="categorySelect" onchange="updateProductList()"></select>
-                </div>
-                <div class="form-group">
-                    <label>PRODUCT SERVICE</label>
-                    <select id="productSelect"></select>
-                </div>
-                <div class="form-group">
-                    <label>UNITS REQUIRED</label>
-                    <input type="number" id="unitsInput" value="1" min="1">
-                </div>
-                <button class="btn-add" onclick="addToCart()" id="addButton">Add to Quotation</button>
+            <div id="calculatorUI" style="display: none;">
+                <label>CATEGORY</label>
+                <select id="categorySelect" onchange="updateProducts()"></select>
+                
+                <label>PRODUCT SERVICE</label>
+                <select id="productSelect"></select>
+                
+                <label>UNITS REQUIRED</label>
+                <input type="number" id="unitsInput" value="1" min="1">
+                
+                <button class="btn-add" onclick="addToCart()">Add to Quotation</button>
             </div>
         </div>
 
-        <h3 id="scopeHeader" style="display:none; letter-spacing: 5px; font-weight: 200; text-align: center;">CURRENT SCOPE</h3>
-        <div id="cartItems"></div>
+        <div id="cartDisplay"></div>
 
         <div id="valuationCard" class="valuation-card" style="display:none;">
             <p style="letter-spacing: 5px; color: var(--primary-green); font-weight: 700;">✦ TOTAL VALUATION ✦</p>
             <h1 class="val-main" id="totalPKR">PKR 0</h1>
-            <div class="val-grid">
-                <div>
-                    <p style="color: var(--primary-green); font-size: 0.8rem; font-weight:900; letter-spacing: 2px;">SAR</p>
-                    <h2 id="totalSAR" style="margin:0;">0.00</h2>
-                </div>
-                <div>
-                    <p style="color: var(--primary-green); font-size: 0.8rem; font-weight:900; letter-spacing: 2px;">AED</p>
-                    <h2 id="totalAED" style="margin:0;">0.00</h2>
-                </div>
+            <div style="display: flex; justify-content: center; gap: 60px; border-top: 1px solid #333; padding-top: 30px; margin-top: 20px;">
+                <div><p style="color: var(--primary-green); font-weight:900; letter-spacing: 2px;">SAR</p><h2 id="totalSAR" style="font-weight: 900;">0.00</h2></div>
+                <div><p style="color: var(--primary-green); font-weight:900; letter-spacing: 2px;">AED</p><h2 id="totalAED" style="font-weight: 900;">0.00</h2></div>
             </div>
-            <button class="clear-btn" onclick="clearCart()">CLEAR ALL QUOTATION</button>
+            <button onclick="clearCart()" style="background:transparent; color:#666; border:none; margin-top:30px; cursor:pointer;">CLEAR QUOTATION</button>
         </div>
     </div>
 
     <script>
-        let cart = [];
         let serviceData = [];
-        const SHEET_ID = '1qvBKlYH7q4dXsu7tEh9OLnKSydfONNRzGa-xjUYLB0g';
+        let cart = {};
 
-        // 1. IMPROVED CSV PARSER (Handles currency commas correctly)
-        function parseCSV(text) {
-            const lines = text.split('\n');
-            return lines.map(line => {
-                const result = [];
-                let cell = '';
-                let inQuotes = false;
-                for (let char of line) {
-                    if (char === '"') inQuotes = !inQuotes;
-                    else if (char === ',' && !inQuotes) {
-                        result.push(cell.trim());
-                        cell = '';
-                    } else cell += char;
-                }
-                result.push(cell.trim());
-                return result;
-            });
-        }
-
-        // 2. CURRENCY CLEANER
-        function cleanValue(val) {
-            if (!val) return 0;
-            return parseFloat(val.replace(/[^\d.]/g, '')) || 0;
-        }
-
-        async function loadSheetData() {
-            try {
-                const response = await fetch(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=0`);
-                const csvText = await response.text();
-                const rows = parseCSV(csvText);
-                const headers = rows[0].map(h => h.toLowerCase());
-
-                // Find column indices
-                const idx = {
-                    cat: headers.findIndex(h => h.includes('category')),
-                    prod: headers.findIndex(h => h.includes('product') && !h.includes('category')),
-                    pkr: headers.findIndex(h => h.includes('pkr')),
-                    sar: headers.findIndex(h => h.includes('sar')),
-                    aed: headers.findIndex(h => h.includes('aed'))
-                };
-
-                serviceData = rows.slice(1).map(row => ({
-                    category: row[idx.cat],
-                    name: row[idx.prod],
-                    pkr: cleanValue(row[idx.pkr]),
-                    sar: cleanValue(row[idx.sar]),
-                    aed: cleanValue(row[idx.aed])
-                })).filter(item => item.name && item.pkr > 0);
-
-                document.getElementById('loadingMessage').style.display = 'none';
-                document.getElementById('formFields').style.display = 'block';
-                initDropdowns();
-            } catch (e) {
-                document.getElementById('loadingMessage').innerHTML = "Engine offline. Please check Sheet publication.";
+        // 1. ADVANCED STAR GENERATOR (Massive & Abundant)
+        function createStars() {
+            const container = document.getElementById('starContainer');
+            for(let i=0; i<150; i++) {
+                const star = document.createElement('div');
+                const size = Math.random() * 12 + 2;
+                star.className = `star ${Math.random() > 0.8 ? 'green' : ''}`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.width = star.style.height = `${size}px`;
+                star.style.setProperty('--d', `${Math.random() * 3 + 2}s`);
+                container.appendChild(star);
             }
         }
 
-        function initDropdowns() {
-            const catSelect = document.getElementById('categorySelect');
-            const categories = [...new Set(serviceData.map(i => i.category))];
-            catSelect.innerHTML = categories.map(c => `<option value="${c}">${c}</option>`).join('');
-            updateProductList();
+        // 2. ROBUST CSV PARSER (Ignores commas inside quotes)
+        function parseCSV(csv) {
+            const lines = csv.split(/\r?\n/);
+            return lines.map(line => {
+                const parts = [];
+                let current = '';
+                let inQuotes = false;
+                for(let i=0; i<line.length; i++) {
+                    const char = line[i];
+                    if(char === '"') inQuotes = !inQuotes;
+                    else if(char === ',' && !inQuotes) { parts.push(current.trim()); current = ''; }
+                    else current += char;
+                }
+                parts.push(current.trim());
+                return parts;
+            });
         }
 
-        function updateProductList() {
+        // 3. CLEAN NUMERIC VALUE
+        function clean(val) {
+            if(!val) return 0;
+            return parseFloat(val.toString().replace(/[^\d.]/g, '')) || 0;
+        }
+
+        // 4. LOAD DATA FROM GOOGLE SHEETS
+        async function loadData() {
+            const SHEET_ID = '1qvBKlYH7q4dXsu7tEh9OLnKSydfONNRzGa-xjUYLB0g';
+            try {
+                const response = await fetch(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv`);
+                const text = await response.text();
+                const rows = parseCSV(text);
+                const headers = rows[0].map(h => h.toLowerCase());
+
+                // Dynamic Column Mapping
+                const cIdx = headers.findIndex(h => h.includes('category'));
+                const pIdx = headers.findIndex(h => h.includes('product') && !h.includes('category'));
+                const pkrIdx = headers.findIndex(h => h.includes('pkr'));
+                const sarIdx = headers.findIndex(h => h.includes('sar'));
+                const aedIdx = headers.findIndex(h => h.includes('aed'));
+
+                serviceData = rows.slice(1).map(r => ({
+                    cat: r[cIdx], name: r[pIdx],
+                    pkr: clean(r[pkrIdx]), sar: clean(r[sarIdx]), aed: clean(r[aedIdx])
+                })).filter(x => x.name && x.pkr > 0);
+
+                document.getElementById('engineStatus').innerText = "CONFIGURE YOUR PROJECT SCOPE";
+                document.getElementById('calculatorUI').style.display = "block";
+                initApp();
+            } catch (e) {
+                document.getElementById('engineStatus').innerText = "ENGINE OFFLINE - CHECK SHEET PERMISSIONS";
+            }
+        }
+
+        function initApp() {
+            const catSelect = document.getElementById('categorySelect');
+            const cats = [...new Set(serviceData.map(s => s.cat))];
+            catSelect.innerHTML = cats.map(c => `<option value="${c}">${c}</option>`).join('');
+            updateProducts();
+        }
+
+        function updateProducts() {
             const cat = document.getElementById('categorySelect').value;
             const prodSelect = document.getElementById('productSelect');
-            const products = serviceData.filter(i => i.category === cat);
-            prodSelect.innerHTML = products.map(p => `<option value="${p.name}">${p.name}</option>`).join('');
+            const prods = serviceData.filter(s => s.cat === cat);
+            prodSelect.innerHTML = prods.map(p => `<option value="${p.name}">${p.name}</option>`).join('');
         }
 
         function addToCart() {
             const name = document.getElementById('productSelect').value;
-            const units = parseInt(document.getElementById('unitsInput').value);
-            const data = serviceData.find(i => i.name === name);
-            const existing = cart.find(i => i.name === name);
+            const qty = parseInt(document.getElementById('unitsInput').value);
+            const data = serviceData.find(s => s.name === name);
 
-            if (existing) existing.units += units;
-            else cart.push({ ...data, units });
-            
-            renderCart();
+            if(cart[name]) {
+                cart[name].qty += qty;
+                cart[name].totalPKR += data.pkr * qty;
+                cart[name].totalSAR += data.sar * qty;
+                cart[name].totalAED += data.aed * qty;
+            } else {
+                cart[name] = { qty, pkr: data.pkr, sar: data.sar, aed: data.aed, totalPKR: data.pkr * qty, totalSAR: data.sar * qty, totalAED: data.aed * qty };
+            }
+            render();
         }
 
-        function renderCart() {
-            const container = document.getElementById('cartItems');
-            const valCard = document.getElementById('valuationCard');
-            const scopeHeader = document.getElementById('scopeHeader');
-            
-            if (cart.length === 0) {
-                valCard.style.display = scopeHeader.style.display = "none";
-                container.innerHTML = "";
-                return;
-            }
-
-            valCard.style.display = scopeHeader.style.display = "block";
+        function render() {
+            const container = document.getElementById('cartDisplay');
+            const card = document.getElementById('valuationCard');
             let tPKR = 0, tSAR = 0, tAED = 0;
+            
+            container.innerHTML = "";
+            const items = Object.keys(cart);
+            
+            if(items.length === 0) { card.style.display = "none"; return; }
+            card.style.display = "block";
 
-            container.innerHTML = cart.map((item, i) => {
-                const p = item.pkr * item.units;
-                const s = item.sar * item.units;
-                const a = item.aed * item.units;
-                tPKR += p; tSAR += s; tAED += a;
-
-                return `
+            items.forEach(name => {
+                const item = cart[name];
+                tPKR += item.totalPKR; tSAR += item.totalSAR; tAED += item.totalAED;
+                container.innerHTML += `
                     <div class="item-card">
                         <div>
-                            <b>${item.name} (x${item.units})</b>
-                            <p style="font-size:0.8rem; margin-top:5px; opacity:0.8;">
-                                <span class="bold-currency">SAR ${s.toLocaleString()}</span> | 
-                                <span class="bold-currency">AED ${a.toLocaleString()}</span>
-                            </p>
+                            <b style="font-size: 1.3rem;">${name} (x${item.qty})</b>
+                            <p style="margin:5px 0 0 0;"><span class="bold-currency">SAR ${item.totalSAR.toLocaleString()}</span> | <span class="bold-currency">AED ${item.totalAED.toLocaleString()}</span></p>
                         </div>
-                        <div style="display:flex; align-items:center; gap:15px;">
-                            <b style="font-size:1.2rem;">PKR ${p.toLocaleString()}</b>
-                            <button class="btn-del" onclick="removeItem(${i})">×</button>
+                        <div style="display:flex; align-items:center; gap:20px;">
+                            <b style="font-size: 1.5rem;">PKR ${item.totalPKR.toLocaleString()}</b>
+                            <button class="btn-del" onclick="removeItem('${name}')">🗑️</button>
                         </div>
-                    </div>`;
-            }).join('');
+                    </div>
+                `;
+            });
 
             document.getElementById('totalPKR').innerText = `PKR ${tPKR.toLocaleString()}`;
             document.getElementById('totalSAR').innerText = tSAR.toLocaleString(undefined, {minimumFractionDigits: 2});
             document.getElementById('totalAED').innerText = tAED.toLocaleString(undefined, {minimumFractionDigits: 2});
         }
 
-        function removeItem(i) { cart.splice(i, 1); renderCart(); }
-        function clearCart() { cart = []; renderCart(); }
+        function removeItem(name) { delete cart[name]; render(); }
+        function clearCart() { cart = {}; render(); }
 
-        loadSheetData();
+        createStars();
+        loadData();
     </script>
 </body>
 </html>
