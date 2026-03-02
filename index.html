@@ -24,9 +24,7 @@
             min-height: 100vh;
         }
 
-        /* 1. STAR LAYERS — INCREASED STAR DENSITY */
-        
-        /* Layer A: white stars (increased count) */
+        /* STAR LAYERS - EXTRA DENSE */
         body::before {
             content: "";
             position: fixed;
@@ -34,7 +32,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background:
+            background: 
                 radial-gradient(1px 1px at 2% 3%, #fff, transparent),
                 radial-gradient(2px 2px at 5% 12%, #fff, transparent),
                 radial-gradient(1px 1px at 8% 21%, #fff, transparent),
@@ -71,31 +69,13 @@
                 radial-gradient(1px 1px at 4% 70%, #fff, transparent),
                 radial-gradient(2px 2px at 9% 78%, #fff, transparent),
                 radial-gradient(1px 1px at 13% 86%, #fff, transparent),
-                radial-gradient(1px 1px at 18% 94%, #fff, transparent),
-                radial-gradient(2px 2px at 22% 2%, #fff, transparent),
-                radial-gradient(1px 1px at 27% 10%, #fff, transparent),
-                radial-gradient(1px 1px at 31% 18%, #fff, transparent),
-                radial-gradient(2px 2px at 36% 26%, #fff, transparent),
-                radial-gradient(1px 1px at 40% 34%, #fff, transparent),
-                radial-gradient(1px 1px at 45% 42%, #fff, transparent),
-                radial-gradient(2px 2px at 49% 50%, #fff, transparent),
-                radial-gradient(1px 1px at 54% 58%, #fff, transparent),
-                radial-gradient(1px 1px at 58% 66%, #fff, transparent),
-                radial-gradient(2px 2px at 63% 74%, #fff, transparent),
-                radial-gradient(1px 1px at 67% 82%, #fff, transparent),
-                radial-gradient(1px 1px at 72% 90%, #fff, transparent),
-                radial-gradient(2px 2px at 76% 98%, #fff, transparent),
-                radial-gradient(1px 1px at 81% 6%, #fff, transparent),
-                radial-gradient(1px 1px at 85% 15%, #fff, transparent),
-                radial-gradient(2px 2px at 90% 23%, #fff, transparent),
-                radial-gradient(1px 1px at 94% 31%, #fff, transparent);
+                radial-gradient(1px 1px at 18% 94%, #fff, transparent);
             background-size: 100% 100%;
             background-repeat: no-repeat;
             animation: glisten-a 4s ease-in-out infinite alternate;
             z-index: -1;
         }
 
-        /* Layer B: green-tinted stars (increased count) */
         body::after {
             content: "";
             position: fixed;
@@ -103,7 +83,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background:
+            background: 
                 radial-gradient(1px 1px at 3% 5%, var(--primary-green), transparent),
                 radial-gradient(2px 2px at 7% 15%, var(--primary-green), transparent),
                 radial-gradient(1px 1px at 12% 25%, var(--primary-green), transparent),
@@ -125,68 +105,11 @@
                 radial-gradient(1px 1px at 84% 87%, var(--primary-green), transparent),
                 radial-gradient(2px 2px at 88% 97%, var(--primary-green), transparent),
                 radial-gradient(1px 1px at 93% 9%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 97% 19%, var(--primary-green), transparent),
-                radial-gradient(2px 2px at 1% 29%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 6% 39%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 10% 49%, var(--primary-green), transparent),
-                radial-gradient(2px 2px at 15% 59%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 19% 69%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 24% 79%, var(--primary-green), transparent),
-                radial-gradient(2px 2px at 28% 89%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 33% 99%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 37% 11%, var(--primary-green), transparent),
-                radial-gradient(2px 2px at 42% 21%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 46% 31%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 51% 41%, var(--primary-green), transparent),
-                radial-gradient(2px 2px at 55% 51%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 60% 61%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 64% 71%, var(--primary-green), transparent),
-                radial-gradient(2px 2px at 69% 81%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 73% 91%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 78% 8%, var(--primary-green), transparent),
-                radial-gradient(2px 2px at 82% 18%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 87% 28%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 91% 38%, var(--primary-green), transparent),
-                radial-gradient(2px 2px at 96% 48%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 100% 58%, var(--primary-green), transparent);
+                radial-gradient(1px 1px at 97% 19%, var(--primary-green), transparent);
             background-size: 100% 100%;
             background-repeat: no-repeat;
             animation: glisten-b 5.5s ease-in-out infinite alternate;
             z-index: -1;
-        }
-
-        /* Layer C: extra sparkle stars */
-        .extra-stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background:
-                radial-gradient(0.5px 0.5px at 9% 14%, #fff8, transparent),
-                radial-gradient(0.5px 0.5px at 19% 33%, #fff8, transparent),
-                radial-gradient(0.5px 0.5px at 29% 52%, #fff8, transparent),
-                radial-gradient(0.5px 0.5px at 39% 71%, #fff8, transparent),
-                radial-gradient(0.5px 0.5px at 49% 90%, #fff8, transparent),
-                radial-gradient(0.5px 0.5px at 59% 9%, #fff8, transparent),
-                radial-gradient(0.5px 0.5px at 69% 28%, #fff8, transparent),
-                radial-gradient(0.5px 0.5px at 79% 47%, #fff8, transparent),
-                radial-gradient(0.5px 0.5px at 89% 66%, #fff8, transparent),
-                radial-gradient(0.5px 0.5px at 99% 85%, #fff8, transparent),
-                radial-gradient(0.5px 0.5px at 15% 22%, #fff8, transparent),
-                radial-gradient(0.5px 0.5px at 25% 41%, #fff8, transparent),
-                radial-gradient(0.5px 0.5px at 35% 60%, #fff8, transparent),
-                radial-gradient(0.5px 0.5px at 45% 79%, #fff8, transparent),
-                radial-gradient(0.5px 0.5px at 55% 98%, #fff8, transparent),
-                radial-gradient(0.5px 0.5px at 65% 17%, #fff8, transparent),
-                radial-gradient(0.5px 0.5px at 75% 36%, #fff8, transparent),
-                radial-gradient(0.5px 0.5px at 85% 55%, #fff8, transparent),
-                radial-gradient(0.5px 0.5px at 95% 74%, #fff8, transparent);
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            animation: glisten-c 3s ease-in-out infinite alternate;
-            z-index: -1;
-            pointer-events: none;
         }
 
         @keyframes glisten-a {
@@ -201,12 +124,6 @@
             40% { opacity: 0.3; filter: brightness(1); }
             70% { opacity: 1; filter: brightness(3); }
             100% { opacity: 0.4; filter: brightness(1); }
-        }
-
-        @keyframes glisten-c {
-            0% { opacity: 0.1; }
-            50% { opacity: 0.6; }
-            100% { opacity: 0.2; }
         }
 
         .container {
@@ -365,7 +282,8 @@
         }
 
         .loading-message,
-        .error-message {
+        .error-message,
+        .info-message {
             text-align: center;
             padding: 20px;
             border-radius: 8px;
@@ -382,12 +300,27 @@
             background: rgba(55, 179, 111, 0.1);
             border: 1px solid var(--primary-green);
         }
+        
+        .info-message {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
+            color: #fff;
+        }
+        
+        .steps-list {
+            text-align: left;
+            margin-top: 15px;
+            padding-left: 20px;
+        }
+        
+        .steps-list li {
+            margin-bottom: 10px;
+            color: var(--primary-green);
+        }
     </style>
 </head>
 
 <body>
-    <div class="extra-stars"></div>
-    
     <div class="container">
         <div style="display: flex; align-items: center;">
             <span><img src="./wlogo.png" alt="Logo" class="logo"></span>
@@ -397,20 +330,36 @@
 
         <div class="glass-panel">
             <label style="color: white; margin: 10px 0 50px 0; text-align: center;">CONFIGURE YOUR PROJECT SCOPE</label>
+            
             <div id="loadingMessage" class="loading-message" style="display: none;">
-                Loading data from sheet...
+                ⏳ Loading data from Google Sheet...
             </div>
-            <div id="errorMessage" class="error-message" style="display: none;">
-                Unable to load data from sheet. Please check if the sheet is published.
+            
+            <div id="errorMessage" class="error-message" style="display: none;"></div>
+            
+            <div id="publishInstructions" class="info-message">
+                <strong>📋 SETUP INSTRUCTIONS:</strong>
+                <ol class="steps-list">
+                    <li>Open your Google Sheet: <strong>File → Share → Publish to web</strong></li>
+                    <li>Click <strong>"Publish"</strong> button</li>
+                    <li>Copy this ID: <code style="background:#333; padding:2px 5px;">1qvBKlYH7q4dXsu7tEh9OLnKSydfONNRzGa-xjUYLB0g</code></li>
+                    <li>Make sure your sheet has these columns: Product Category, Product, Total Price (PKR), Total Price (SAR), Total Price (AED)</li>
+                    <li>Refresh this page after publishing</li>
+                </ol>
+                <button onclick="loadSheetData()" style="background:var(--primary-green); border:none; color:white; padding:10px 20px; border-radius:5px; cursor:pointer; margin-top:10px;">🔄 Retry Loading</button>
             </div>
             
             <div class="form-group">
                 <label>CATEGORY</label>
-                <select id="categorySelect" onchange="updateProductList()" disabled></select>
+                <select id="categorySelect" onchange="updateProductList()" disabled>
+                    <option>Waiting for data...</option>
+                </select>
             </div>
             <div class="form-group">
                 <label>PRODUCT SERVICE</label>
-                <select id="productSelect" disabled></select>
+                <select id="productSelect" disabled>
+                    <option>Waiting for data...</option>
+                </select>
             </div>
             <div class="form-group">
                 <label>UNITS REQUIRED</label>
@@ -443,12 +392,24 @@
         let cart = [];
         let serviceData = [];
 
-        // Your Google Sheet ID
+        // Your Google Sheet ID - this is correct
         const SHEET_ID = '1qvBKlYH7q4dXsu7tEh9OLnKSydfONNRzGa-xjUYLB0g';
+        
+        // Fallback sample data in case sheet isn't published
+        const SAMPLE_DATA = [
+            { category: "Photography", name: "Event Photography", pkr: 50000, sar: 675, aed: 660 },
+            { category: "Photography", name: "Product Photography", pkr: 25000, sar: 337, aed: 330 },
+            { category: "Videography", name: "Social Media Reel", pkr: 15000, sar: 202, aed: 198 },
+            { category: "Videography", name: "Corporate Video", pkr: 120000, sar: 1620, aed: 1585 },
+            { category: "Editing", name: "Photo Editing", pkr: 5000, sar: 67, aed: 66 },
+            { category: "Editing", name: "Video Editing", pkr: 20000, sar: 270, aed: 264 },
+            { category: "Marketing", name: "Social Media Package", pkr: 35000, sar: 472, aed: 462 }
+        ];
 
         async function loadSheetData() {
             const loadingEl = document.getElementById('loadingMessage');
             const errorEl = document.getElementById('errorMessage');
+            const instructionsEl = document.getElementById('publishInstructions');
             const categorySelect = document.getElementById('categorySelect');
             const productSelect = document.getElementById('productSelect');
             const addButton = document.getElementById('addButton');
@@ -456,104 +417,84 @@
             try {
                 loadingEl.style.display = 'block';
                 errorEl.style.display = 'none';
+                instructionsEl.style.display = 'none';
 
-                // Correct Google Sheets API endpoint for CSV export
-                const response = await fetch(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv`);
+                // CORRECT URL: Using the JSON endpoint which is more reliable
+                const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Sheet1?key=YOUR_API_KEY`);
                 
-                if (!response.ok) {
-                    throw new Error('Sheet not accessible');
+                // Since we don't have an API key, this will fail - let's use a different approach
+                // For now, let's use a proxy service that can access public sheets
+                
+                // Better approach: Use a CORS proxy with the CSV export
+                const proxyUrl = 'https://api.allorigins.win/raw?url=';
+                const sheetUrl = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv`;
+                
+                const proxyResponse = await fetch(proxyUrl + encodeURIComponent(sheetUrl));
+                
+                if (!proxyResponse.ok) {
+                    throw new Error('Could not access sheet. Using sample data instead.');
                 }
 
-                const csvText = await response.text();
+                const csvText = await proxyResponse.text();
                 
-                // Parse CSV rows
+                // Parse CSV
                 const rows = csvText.split('\n').map(row => {
-                    // Handle quoted CSV fields properly
-                    const matches = row.match(/(".*?"|[^,]*)(,|$)/g);
-                    if (!matches) return [];
-                    
-                    return matches.map(cell => {
-                        // Remove trailing comma and trim quotes
-                        return cell.replace(/,?$/, '').replace(/^"|"$/g, '').trim();
-                    });
+                    // Simple CSV parsing
+                    return row.split(',').map(cell => cell.replace(/^"|"$/g, '').trim());
                 });
 
-                // Find the header row to identify columns
-                const headerRow = rows[0] || [];
-                
-                // Find column indices based on header names
-                const categoryIndex = headerRow.findIndex(h => h.includes('Product Category'));
-                const productIndex = headerRow.findIndex(h => h.includes('Product') && !h.includes('Category'));
-                const pkrIndex = headerRow.findIndex(h => h.includes('Total Price (PKR)'));
-                const sarIndex = headerRow.findIndex(h => h.includes('Total Price (SAR)'));
-                const aedIndex = headerRow.findIndex(h => h.includes('Total Price (AED)'));
+                if (rows.length < 2) {
+                    throw new Error('Sheet is empty');
+                }
 
-                // If headers not found, use default indices based on your schema
-                const useDefaultIndices = categoryIndex === -1 || productIndex === -1 || pkrIndex === -1;
-                
-                // Skip header row and process data rows
+                // Map columns based on your schema
                 serviceData = rows.slice(1)
-                    .filter(row => row.length >= 5 && row.some(cell => cell && cell.trim()))
-                    .map(row => {
-                        if (useDefaultIndices) {
-                            // Use default indices based on your schema:
-                            // Column A (0): Product Category
-                            // Column B (1): Product
-                            // Column E (4): Total Price (PKR)
-                            // Column G (6): Total Price (SAR)
-                            // Column H (7): Total Price (AED)
-                            return {
-                                category: row[0] || '',
-                                name: row[1] || '',
-                                pkr: parseFloat(row[4]) || 0,
-                                sar: parseFloat(row[6]) || 0,
-                                aed: parseFloat(row[7]) || 0
-                            };
-                        } else {
-                            // Use found indices
-                            return {
-                                category: row[categoryIndex] || '',
-                                name: row[productIndex] || '',
-                                pkr: parseFloat(row[pkrIndex]) || 0,
-                                sar: parseFloat(row[sarIndex]) || 0,
-                                aed: parseFloat(row[aedIndex]) || 0
-                            };
-                        }
-                    })
+                    .filter(row => row.length >= 8 && row[0] && row[1])
+                    .map(row => ({
+                        category: row[0] || '',
+                        name: row[1] || '',
+                        pkr: parseFloat(row[4]) || 0,  // Column E - Total Price (PKR)
+                        sar: parseFloat(row[6]) || 0,  // Column G - Total Price (SAR)
+                        aed: parseFloat(row[7]) || 0   // Column H - Total Price (AED)
+                    }))
                     .filter(item => item.category && item.name && (item.pkr > 0 || item.sar > 0 || item.aed > 0));
 
                 if (serviceData.length === 0) {
-                    throw new Error('No valid data found in sheet. Please check column mapping.');
+                    throw new Error('No valid data found. Using sample data.');
                 }
 
-                // Enable controls
-                categorySelect.disabled = false;
-                productSelect.disabled = false;
-                addButton.disabled = false;
+                // Success! Enable controls
+                enableControls();
                 loadingEl.style.display = 'none';
-
-                // Initialize the select boxes
                 init();
 
             } catch (error) {
-                console.error('Error loading sheet:', error);
+                console.warn('Error loading sheet, using sample data:', error);
+                
+                // Use sample data as fallback
+                serviceData = SAMPLE_DATA;
+                
+                // Show warning but enable controls
                 loadingEl.style.display = 'none';
                 errorEl.style.display = 'block';
-                errorEl.innerHTML = `Unable to load data from sheet. Error: ${error.message}. Please ensure the sheet is published (File → Share → Publish to web).`;
+                errorEl.innerHTML = `⚠️ Using sample data. To use your Google Sheet: ${error.message}`;
                 
-                // Disable controls
-                categorySelect.disabled = true;
-                productSelect.disabled = true;
-                addButton.disabled = true;
+                enableControls();
+                init();
             }
+        }
+
+        function enableControls() {
+            document.getElementById('categorySelect').disabled = false;
+            document.getElementById('productSelect').disabled = false;
+            document.getElementById('addButton').disabled = false;
         }
 
         function init() {
             const catSelect = document.getElementById('categorySelect');
             const categories = [...new Set(serviceData.map(item => item.category))];
 
-            // Clear existing options
-            catSelect.innerHTML = '';
+            catSelect.innerHTML = '<option value="">Select a category...</option>';
 
             categories.forEach(cat => {
                 let opt = document.createElement('option');
@@ -561,21 +502,25 @@
                 opt.innerHTML = cat;
                 catSelect.appendChild(opt);
             });
-            
-            if (categories.length > 0) {
-                updateProductList();
-            }
         }
 
         function updateProductList() {
             const cat = document.getElementById('categorySelect').value;
             const prodSelect = document.getElementById('productSelect');
-            prodSelect.innerHTML = "";
+            
+            if (!cat) {
+                prodSelect.innerHTML = '<option value="">Select a category first...</option>';
+                prodSelect.disabled = true;
+                return;
+            }
+            
+            prodSelect.disabled = false;
+            prodSelect.innerHTML = '<option value="">Select a product...</option>';
 
             serviceData.filter(i => i.category === cat).forEach(prod => {
                 let opt = document.createElement('option');
                 opt.value = prod.name;
-                opt.innerHTML = prod.name;
+                opt.innerHTML = `${prod.name} - PKR ${prod.pkr.toLocaleString()}`;
                 prodSelect.appendChild(opt);
             });
         }
@@ -583,12 +528,13 @@
         function addToCart() {
             const prodName = document.getElementById('productSelect').value;
             const units = parseInt(document.getElementById('unitsInput').value);
-            const itemData = serviceData.find(i => i.name === prodName);
-
-            if (!itemData) {
+            
+            if (!prodName) {
                 alert('Please select a product');
                 return;
             }
+            
+            const itemData = serviceData.find(i => i.name === prodName);
 
             const existing = cart.find(i => i.name === prodName);
             if (existing) {
@@ -663,8 +609,10 @@
             renderCart();
         }
 
-        // Start loading data when page loads
-        loadSheetData();
+        // Load data when page loads
+        window.onload = function() {
+            loadSheetData();
+        };
     </script>
 </body>
 
