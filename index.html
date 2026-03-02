@@ -24,7 +24,9 @@
             min-height: 100vh;
         }
 
-        /* Star layers (same as before) */
+        /* 1. STAR LAYERS — INCREASED STAR DENSITY */
+        
+        /* Layer A: white stars (increased count) */
         body::before {
             content: "";
             position: fixed;
@@ -33,27 +35,67 @@
             width: 100%;
             height: 100%;
             background:
-                radial-gradient(1px 1px at 8% 7%, #fff, transparent),
-                radial-gradient(1px 1px at 18% 35%, #fff, transparent),
-                radial-gradient(2px 2px at 28% 62%, #fff, transparent),
-                radial-gradient(1px 1px at 37% 18%, #fff, transparent),
-                radial-gradient(1px 1px at 45% 85%, #fff, transparent),
-                radial-gradient(2px 2px at 56% 42%, #fff, transparent),
-                radial-gradient(1px 1px at 65% 10%, #fff, transparent),
-                radial-gradient(1px 1px at 72% 74%, #fff, transparent),
-                radial-gradient(2px 2px at 83% 30%, #fff, transparent),
-                radial-gradient(1px 1px at 91% 56%, #fff, transparent),
-                radial-gradient(1px 1px at 5% 50%, #fff, transparent),
-                radial-gradient(1px 1px at 95% 85%, #fff, transparent),
-                radial-gradient(2px 2px at 50% 25%, #fff, transparent),
-                radial-gradient(1px 1px at 33% 90%, #fff, transparent),
-                radial-gradient(1px 1px at 78% 95%, #fff, transparent);
+                radial-gradient(1px 1px at 2% 3%, #fff, transparent),
+                radial-gradient(2px 2px at 5% 12%, #fff, transparent),
+                radial-gradient(1px 1px at 8% 21%, #fff, transparent),
+                radial-gradient(1px 1px at 11% 29%, #fff, transparent),
+                radial-gradient(2px 2px at 14% 37%, #fff, transparent),
+                radial-gradient(1px 1px at 17% 45%, #fff, transparent),
+                radial-gradient(1px 1px at 20% 53%, #fff, transparent),
+                radial-gradient(2px 2px at 23% 61%, #fff, transparent),
+                radial-gradient(1px 1px at 26% 69%, #fff, transparent),
+                radial-gradient(1px 1px at 29% 77%, #fff, transparent),
+                radial-gradient(2px 2px at 32% 85%, #fff, transparent),
+                radial-gradient(1px 1px at 35% 93%, #fff, transparent),
+                radial-gradient(1px 1px at 38% 98%, #fff, transparent),
+                radial-gradient(2px 2px at 41% 8%, #fff, transparent),
+                radial-gradient(1px 1px at 44% 16%, #fff, transparent),
+                radial-gradient(1px 1px at 47% 24%, #fff, transparent),
+                radial-gradient(2px 2px at 50% 32%, #fff, transparent),
+                radial-gradient(1px 1px at 53% 40%, #fff, transparent),
+                radial-gradient(1px 1px at 56% 48%, #fff, transparent),
+                radial-gradient(2px 2px at 59% 56%, #fff, transparent),
+                radial-gradient(1px 1px at 62% 64%, #fff, transparent),
+                radial-gradient(1px 1px at 65% 72%, #fff, transparent),
+                radial-gradient(2px 2px at 68% 80%, #fff, transparent),
+                radial-gradient(1px 1px at 71% 88%, #fff, transparent),
+                radial-gradient(1px 1px at 74% 96%, #fff, transparent),
+                radial-gradient(2px 2px at 77% 4%, #fff, transparent),
+                radial-gradient(1px 1px at 80% 14%, #fff, transparent),
+                radial-gradient(1px 1px at 83% 22%, #fff, transparent),
+                radial-gradient(2px 2px at 86% 30%, #fff, transparent),
+                radial-gradient(1px 1px at 89% 38%, #fff, transparent),
+                radial-gradient(1px 1px at 92% 46%, #fff, transparent),
+                radial-gradient(2px 2px at 95% 54%, #fff, transparent),
+                radial-gradient(1px 1px at 98% 62%, #fff, transparent),
+                radial-gradient(1px 1px at 4% 70%, #fff, transparent),
+                radial-gradient(2px 2px at 9% 78%, #fff, transparent),
+                radial-gradient(1px 1px at 13% 86%, #fff, transparent),
+                radial-gradient(1px 1px at 18% 94%, #fff, transparent),
+                radial-gradient(2px 2px at 22% 2%, #fff, transparent),
+                radial-gradient(1px 1px at 27% 10%, #fff, transparent),
+                radial-gradient(1px 1px at 31% 18%, #fff, transparent),
+                radial-gradient(2px 2px at 36% 26%, #fff, transparent),
+                radial-gradient(1px 1px at 40% 34%, #fff, transparent),
+                radial-gradient(1px 1px at 45% 42%, #fff, transparent),
+                radial-gradient(2px 2px at 49% 50%, #fff, transparent),
+                radial-gradient(1px 1px at 54% 58%, #fff, transparent),
+                radial-gradient(1px 1px at 58% 66%, #fff, transparent),
+                radial-gradient(2px 2px at 63% 74%, #fff, transparent),
+                radial-gradient(1px 1px at 67% 82%, #fff, transparent),
+                radial-gradient(1px 1px at 72% 90%, #fff, transparent),
+                radial-gradient(2px 2px at 76% 98%, #fff, transparent),
+                radial-gradient(1px 1px at 81% 6%, #fff, transparent),
+                radial-gradient(1px 1px at 85% 15%, #fff, transparent),
+                radial-gradient(2px 2px at 90% 23%, #fff, transparent),
+                radial-gradient(1px 1px at 94% 31%, #fff, transparent);
             background-size: 100% 100%;
             background-repeat: no-repeat;
             animation: glisten-a 4s ease-in-out infinite alternate;
             z-index: -1;
         }
 
+        /* Layer B: green-tinted stars (increased count) */
         body::after {
             content: "";
             position: fixed;
@@ -62,40 +104,117 @@
             width: 100%;
             height: 100%;
             background:
-                radial-gradient(1px 1px at 13% 22%, var(--primary-green), transparent),
-                radial-gradient(2px 2px at 24% 55%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 41% 38%, var(--primary-green), transparent),
-                radial-gradient(2px 2px at 59% 78%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 70% 15%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 85% 65%, var(--primary-green), transparent),
-                radial-gradient(2px 2px at 96% 40%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 3% 80%, var(--primary-green), transparent),
-                radial-gradient(1px 1px at 52% 93%, var(--primary-green), transparent),
-                radial-gradient(2px 2px at 88% 10%, var(--primary-green), transparent);
+                radial-gradient(1px 1px at 3% 5%, var(--primary-green), transparent),
+                radial-gradient(2px 2px at 7% 15%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 12% 25%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 16% 35%, var(--primary-green), transparent),
+                radial-gradient(2px 2px at 21% 45%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 25% 55%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 30% 65%, var(--primary-green), transparent),
+                radial-gradient(2px 2px at 34% 75%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 39% 85%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 43% 95%, var(--primary-green), transparent),
+                radial-gradient(2px 2px at 48% 7%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 52% 17%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 57% 27%, var(--primary-green), transparent),
+                radial-gradient(2px 2px at 61% 37%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 66% 47%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 70% 57%, var(--primary-green), transparent),
+                radial-gradient(2px 2px at 75% 67%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 79% 77%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 84% 87%, var(--primary-green), transparent),
+                radial-gradient(2px 2px at 88% 97%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 93% 9%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 97% 19%, var(--primary-green), transparent),
+                radial-gradient(2px 2px at 1% 29%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 6% 39%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 10% 49%, var(--primary-green), transparent),
+                radial-gradient(2px 2px at 15% 59%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 19% 69%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 24% 79%, var(--primary-green), transparent),
+                radial-gradient(2px 2px at 28% 89%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 33% 99%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 37% 11%, var(--primary-green), transparent),
+                radial-gradient(2px 2px at 42% 21%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 46% 31%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 51% 41%, var(--primary-green), transparent),
+                radial-gradient(2px 2px at 55% 51%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 60% 61%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 64% 71%, var(--primary-green), transparent),
+                radial-gradient(2px 2px at 69% 81%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 73% 91%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 78% 8%, var(--primary-green), transparent),
+                radial-gradient(2px 2px at 82% 18%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 87% 28%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 91% 38%, var(--primary-green), transparent),
+                radial-gradient(2px 2px at 96% 48%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 100% 58%, var(--primary-green), transparent);
             background-size: 100% 100%;
             background-repeat: no-repeat;
             animation: glisten-b 5.5s ease-in-out infinite alternate;
             z-index: -1;
         }
 
+        /* Layer C: extra sparkle stars */
+        .extra-stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(0.5px 0.5px at 9% 14%, #fff8, transparent),
+                radial-gradient(0.5px 0.5px at 19% 33%, #fff8, transparent),
+                radial-gradient(0.5px 0.5px at 29% 52%, #fff8, transparent),
+                radial-gradient(0.5px 0.5px at 39% 71%, #fff8, transparent),
+                radial-gradient(0.5px 0.5px at 49% 90%, #fff8, transparent),
+                radial-gradient(0.5px 0.5px at 59% 9%, #fff8, transparent),
+                radial-gradient(0.5px 0.5px at 69% 28%, #fff8, transparent),
+                radial-gradient(0.5px 0.5px at 79% 47%, #fff8, transparent),
+                radial-gradient(0.5px 0.5px at 89% 66%, #fff8, transparent),
+                radial-gradient(0.5px 0.5px at 99% 85%, #fff8, transparent),
+                radial-gradient(0.5px 0.5px at 15% 22%, #fff8, transparent),
+                radial-gradient(0.5px 0.5px at 25% 41%, #fff8, transparent),
+                radial-gradient(0.5px 0.5px at 35% 60%, #fff8, transparent),
+                radial-gradient(0.5px 0.5px at 45% 79%, #fff8, transparent),
+                radial-gradient(0.5px 0.5px at 55% 98%, #fff8, transparent),
+                radial-gradient(0.5px 0.5px at 65% 17%, #fff8, transparent),
+                radial-gradient(0.5px 0.5px at 75% 36%, #fff8, transparent),
+                radial-gradient(0.5px 0.5px at 85% 55%, #fff8, transparent),
+                radial-gradient(0.5px 0.5px at 95% 74%, #fff8, transparent);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            animation: glisten-c 3s ease-in-out infinite alternate;
+            z-index: -1;
+            pointer-events: none;
+        }
+
         @keyframes glisten-a {
-            0% { opacity: 0.25; filter: brightness(1); }
+            0% { opacity: 0.3; filter: brightness(1); }
             30% { opacity: 1; filter: brightness(2); }
-            60% { opacity: 0.4; filter: brightness(1); }
+            60% { opacity: 0.5; filter: brightness(1); }
             100% { opacity: 0.9; filter: brightness(2.5); }
         }
 
         @keyframes glisten-b {
             0% { opacity: 0.8; filter: brightness(2); }
-            40% { opacity: 0.2; filter: brightness(1); }
+            40% { opacity: 0.3; filter: brightness(1); }
             70% { opacity: 1; filter: brightness(3); }
-            100% { opacity: 0.35; filter: brightness(1); }
+            100% { opacity: 0.4; filter: brightness(1); }
+        }
+
+        @keyframes glisten-c {
+            0% { opacity: 0.1; }
+            50% { opacity: 0.6; }
+            100% { opacity: 0.2; }
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 40px 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .logo {
@@ -267,6 +386,8 @@
 </head>
 
 <body>
+    <div class="extra-stars"></div>
+    
     <div class="container">
         <div style="display: flex; align-items: center;">
             <span><img src="./wlogo.png" alt="Logo" class="logo"></span>
@@ -322,9 +443,8 @@
         let cart = [];
         let serviceData = [];
 
-        // Your Google Sheet ID - using the correct API endpoint
+        // Your Google Sheet ID
         const SHEET_ID = '1qvBKlYH7q4dXsu7tEh9OLnKSydfONNRzGa-xjUYLB0g';
-        const SHEET_NAME = 'Sheet1'; // Change this to your sheet name if different
 
         async function loadSheetData() {
             const loadingEl = document.getElementById('loadingMessage');
@@ -337,8 +457,8 @@
                 loadingEl.style.display = 'block';
                 errorEl.style.display = 'none';
 
-                // Using the correct Google Sheets CSV export URL
-                const response = await fetch(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${SHEET_NAME}`);
+                // Correct Google Sheets API endpoint for CSV export
+                const response = await fetch(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv`);
                 
                 if (!response.ok) {
                     throw new Error('Sheet not accessible');
@@ -346,62 +466,65 @@
 
                 const csvText = await response.text();
                 
-                // Parse CSV properly handling quotes and commas
-                const rows = [];
-                const lines = csvText.split('\n');
-                
-                // Skip header row (index 0)
-                for (let i = 1; i < lines.length; i++) {
-                    if (!lines[i].trim()) continue; // Skip empty lines
+                // Parse CSV rows
+                const rows = csvText.split('\n').map(row => {
+                    // Handle quoted CSV fields properly
+                    const matches = row.match(/(".*?"|[^,]*)(,|$)/g);
+                    if (!matches) return [];
                     
-                    // Simple CSV parser (handles quoted fields)
-                    const row = [];
-                    let inQuote = false;
-                    let currentValue = '';
-                    
-                    for (let char of lines[i]) {
-                        if (char === '"') {
-                            inQuote = !inQuote;
-                        } else if (char === ',' && !inQuote) {
-                            row.push(currentValue.replace(/"/g, '').trim());
-                            currentValue = '';
-                        } else {
-                            currentValue += char;
-                        }
-                    }
-                    row.push(currentValue.replace(/"/g, '').trim());
-                    
-                    rows.push(row);
-                }
+                    return matches.map(cell => {
+                        // Remove trailing comma and trim quotes
+                        return cell.replace(/,?$/, '').replace(/^"|"$/g, '').trim();
+                    });
+                });
 
-                // Map columns based on your schema:
-                // 0: Product Category
-                // 1: Product
-                // 2: Units Required (skip - this is for calculation)
-                // 3: Total Cost (PKR)
-                // 4: Total Price (PKR) - This is our PKR price
-                // 5: Total Price (USD)
-                // 6: Total Price (SAR)
-                // 7: Total Price (AED)
-                // 8: Total Cost (AED)
-                // 9: Discounted Price (PKR)
-                // 10: Discounted Price (USD)
-                // 11: Discounted Price (SAR)
-                // 12: Discounted Price (AED)
+                // Find the header row to identify columns
+                const headerRow = rows[0] || [];
                 
-                serviceData = rows.map(row => ({
-                    category: row[0] || '',
-                    name: row[1] || '',
-                    pkr: parseFloat(row[4]) || 0, // Total Price (PKR) - column 5 (index 4)
-                    sar: parseFloat(row[6]) || 0, // Total Price (SAR) - column 7 (index 6)
-                    aed: parseFloat(row[7]) || 0  // Total Price (AED) - column 8 (index 7)
-                })).filter(item => item.category && item.name && (item.pkr > 0 || item.sar > 0 || item.aed > 0));
+                // Find column indices based on header names
+                const categoryIndex = headerRow.findIndex(h => h.includes('Product Category'));
+                const productIndex = headerRow.findIndex(h => h.includes('Product') && !h.includes('Category'));
+                const pkrIndex = headerRow.findIndex(h => h.includes('Total Price (PKR)'));
+                const sarIndex = headerRow.findIndex(h => h.includes('Total Price (SAR)'));
+                const aedIndex = headerRow.findIndex(h => h.includes('Total Price (AED)'));
+
+                // If headers not found, use default indices based on your schema
+                const useDefaultIndices = categoryIndex === -1 || productIndex === -1 || pkrIndex === -1;
+                
+                // Skip header row and process data rows
+                serviceData = rows.slice(1)
+                    .filter(row => row.length >= 5 && row.some(cell => cell && cell.trim()))
+                    .map(row => {
+                        if (useDefaultIndices) {
+                            // Use default indices based on your schema:
+                            // Column A (0): Product Category
+                            // Column B (1): Product
+                            // Column E (4): Total Price (PKR)
+                            // Column G (6): Total Price (SAR)
+                            // Column H (7): Total Price (AED)
+                            return {
+                                category: row[0] || '',
+                                name: row[1] || '',
+                                pkr: parseFloat(row[4]) || 0,
+                                sar: parseFloat(row[6]) || 0,
+                                aed: parseFloat(row[7]) || 0
+                            };
+                        } else {
+                            // Use found indices
+                            return {
+                                category: row[categoryIndex] || '',
+                                name: row[productIndex] || '',
+                                pkr: parseFloat(row[pkrIndex]) || 0,
+                                sar: parseFloat(row[sarIndex]) || 0,
+                                aed: parseFloat(row[aedIndex]) || 0
+                            };
+                        }
+                    })
+                    .filter(item => item.category && item.name && (item.pkr > 0 || item.sar > 0 || item.aed > 0));
 
                 if (serviceData.length === 0) {
-                    throw new Error('No valid data found in sheet');
+                    throw new Error('No valid data found in sheet. Please check column mapping.');
                 }
-
-                console.log('Loaded data:', serviceData); // For debugging
 
                 // Enable controls
                 categorySelect.disabled = false;
@@ -416,7 +539,7 @@
                 console.error('Error loading sheet:', error);
                 loadingEl.style.display = 'none';
                 errorEl.style.display = 'block';
-                errorEl.innerHTML = `Unable to load data from sheet. Error: ${error.message}. Please check if the sheet is published.`;
+                errorEl.innerHTML = `Unable to load data from sheet. Error: ${error.message}. Please ensure the sheet is published (File → Share → Publish to web).`;
                 
                 // Disable controls
                 categorySelect.disabled = true;
