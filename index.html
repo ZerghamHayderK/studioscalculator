@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bayut Studios | Price Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;700;900&family=Inter:wght@900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #37b36f;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background-color: #000000;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Star layers (same as before) */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(1px 1px at 8% 7%, #fff, transparent),
+                radial-gradient(1px 1px at 18% 35%, #fff, transparent),
+                radial-gradient(2px 2px at 28% 62%, #fff, transparent),
+                radial-gradient(1px 1px at 37% 18%, #fff, transparent),
+                radial-gradient(1px 1px at 45% 85%, #fff, transparent),
+                radial-gradient(2px 2px at 56% 42%, #fff, transparent),
+                radial-gradient(1px 1px at 65% 10%, #fff, transparent),
+                radial-gradient(1px 1px at 72% 74%, #fff, transparent),
+                radial-gradient(2px 2px at 83% 30%, #fff, transparent),
+                radial-gradient(1px 1px at 91% 56%, #fff, transparent),
+                radial-gradient(1px 1px at 5% 50%, #fff, transparent),
+                radial-gradient(1px 1px at 95% 85%, #fff, transparent),
+                radial-gradient(2px 2px at 50% 25%, #fff, transparent),
+                radial-gradient(1px 1px at 33% 90%, #fff, transparent),
+                radial-gradient(1px 1px at 78% 95%, #fff, transparent);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            animation: glisten-a 4s ease-in-out infinite alternate;
+            z-index: -1;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(1px 1px at 13% 22%, var(--primary-green), transparent),
+                radial-gradient(2px 2px at 24% 55%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 41% 38%, var(--primary-green), transparent),
+                radial-gradient(2px 2px at 59% 78%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 70% 15%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 85% 65%, var(--primary-green), transparent),
+                radial-gradient(2px 2px at 96% 40%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 3% 80%, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 52% 93%, var(--primary-green), transparent),
+                radial-gradient(2px 2px at 88% 10%, var(--primary-green), transparent);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            animation: glisten-b 5.5s ease-in-out infinite alternate;
+            z-index: -1;
+        }
+
+        @keyframes glisten-a {
+            0% { opacity: 0.25; filter: brightness(1); }
+            30% { opacity: 1; filter: brightness(2); }
+            60% { opacity: 0.4; filter: brightness(1); }
+            100% { opacity: 0.9; filter: brightness(2.5); }
+        }
+
+        @keyframes glisten-b {
+            0% { opacity: 0.8; filter: brightness(2); }
+            40% { opacity: 0.2; filter: brightness(1); }
+            70% { opacity: 1; filter: brightness(3); }
+            100% { opacity: 0.35; filter: brightness(1); }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .logo {
+            width: 80px;
+            border-radius: 15px;
+        }
+
+        .rich-header {
+            text-align: center;
+            font-weight: 900;
+            letter-spacing: 12px;
+            text-transform: uppercase;
+            margin: 20px 0;
+            text-shadow: 0 0 40px rgba(55, 179, 111, 0.8);
+            font-size: 2.5rem;
+        }
+
+        .glass-panel {
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            color: var(--primary-green);
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 12px;
+            background: #000;
+            border: 1px solid var(--glass-border);
+            color: white;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+            box-sizing: border-box;
+        }
+
+        select:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-add {
+            width: 100%;
+            background: linear-gradient(135deg, #1a6b4a 0%, #37b36f 100%);
+            border: none;
+            color: white;
+            font-weight: 900;
+            letter-spacing: 3px;
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .btn-add:hover:not(:disabled) {
+            box-shadow: 0 0 20px rgba(55, 179, 111, 0.5);
+            background: #37b36f;
+        }
+
+        .btn-add:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .item-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .bold-currency {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            color: var(--primary-green);
+        }
+
+        .btn-del {
+            background: transparent;
+            border: none;
+            color: #ff4b4b;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0 10px;
+        }
+
+        .valuation-card {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            border-radius: 20px;
+            background: rgba(55, 179, 111, 0.1);
+            text-align: center;
+            margin-top: 40px;
+            backdrop-filter: blur(10px);
+        }
+
+        .val-title {
+            letter-spacing: 5px;
+            color: var(--primary-green);
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .val-main {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin: 10px 0;
+        }
+
+        .val-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            border-top: 1px solid var(--glass-border);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .clear-btn {
+            background: transparent;
+            color: white;
+            border: 1px solid var(--glass-border);
+            padding: 10px;
+            width: 100%;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        .loading-message,
+        .error-message {
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        .error-message {
+            background: rgba(255, 75, 75, 0.1);
+            border: 1px solid #ff4b4b;
+            color: #ff4b4b;
+        }
+
+        .loading-message {
+            background: rgba(55, 179, 111, 0.1);
+            border: 1px solid var(--primary-green);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div style="display: flex; align-items: center;">
+            <span><img src="/wlogo.png" alt="Logo" class="logo"></span>
+            <span style="color: var(--primary-green); font-size: 4.9rem; font-weight:900;">Bayut Studios</span>
+        </div>
+        <h1 class="rich-header">Price Calculator</h1>
+
+        <div class="glass-panel">
+            <label style="color: white; margin: 10px 0 50px 0; text-align: center;">CONFIGURE YOUR PROJECT SCOPE</label>
+            <div id="loadingMessage" class="loading-message" style="display: none;">
+                Loading data from sheet...
+            </div>
+            <div id="errorMessage" class="error-message" style="display: none;">
+                Unable to load data from sheet. Please check if the sheet is published.
+            </div>
+            
+            <div class="form-group">
+                <label>CATEGORY</label>
+                <select id="categorySelect" onchange="updateProductList()" disabled></select>
+            </div>
+            <div class="form-group">
+                <label>PRODUCT SERVICE</label>
+                <select id="productSelect" disabled></select>
+            </div>
+            <div class="form-group">
+                <label>UNITS REQUIRED</label>
+                <input type="number" id="unitsInput" value="1" min="1">
+            </div>
+            <button class="btn-add" onclick="addToCart()" id="addButton" disabled>Add to Quotation</button>
+        </div>
+
+        <h3 id="scopeHeader" style="display:none;">CURRENT SCOPE</h3>
+        <div id="cartItems"></div>
+
+        <div id="valuationCard" class="valuation-card" style="display:none;">
+            <p class="val-title">✦ TOTAL VALUATION ✦</p>
+            <h1 class="val-main" id="totalPKR">PKR 0</h1>
+            <div class="val-grid">
+                <div>
+                    <p style="color: var(--primary-green); font-size: 0.9rem; font-weight:900;">SAR</p>
+                    <h2 id="totalSAR" style="margin:0;">0.00</h2>
+                </div>
+                <div>
+                    <p style="color: var(--primary-green); font-size: 0.9rem; font-weight:900;">AED</p>
+                    <h2 id="totalAED" style="margin:0;">0.00</h2>
+                </div>
+            </div>
+            <button class="clear-btn" onclick="clearCart()">CLEAR ALL QUOTATION</button>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+        let serviceData = [];
+
+        // Your Google Sheet ID and published CSV link
+        // IMPORTANT: You need to publish your sheet first!
+        const SHEET_ID = '1qvBKlYH7q4dXsu7tEh9OLnKSydfONNRzGa-xjUYLB0g';
+        const SHEET_GID = '0'; // First sheet
+
+        async function loadSheetData() {
+            const loadingEl = document.getElementById('loadingMessage');
+            const errorEl = document.getElementById('errorMessage');
+            const categorySelect = document.getElementById('categorySelect');
+            const productSelect = document.getElementById('productSelect');
+            const addButton = document.getElementById('addButton');
+
+            try {
+                loadingEl.style.display = 'block';
+                errorEl.style.display = 'none';
+
+                // Using the published CSV export (you need to publish the sheet first)
+                const response = await fetch(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${SHEET_GID}`);
+                
+                if (!response.ok) {
+                    throw new Error('Sheet not accessible');
+                }
+
+                const csvText = await response.text();
+                const rows = csvText.split('\n').map(row => {
+                    // Parse CSV (simple version - assumes no commas in fields)
+                    return row.split(',').map(cell => cell.trim().replace(/^"|"$/g, ''));
+                });
+
+                // Skip header row and map to serviceData format
+                // Expected columns: Category, Name, PKR, SAR, AED
+                serviceData = rows.slice(1).filter(row => row.length >= 5).map(row => ({
+                    category: row[0],
+                    name: row[1],
+                    pkr: parseFloat(row[2]) || 0,
+                    sar: parseFloat(row[3]) || 0,
+                    aed: parseFloat(row[4]) || 0
+                }));
+
+                if (serviceData.length === 0) {
+                    throw new Error('No data found in sheet');
+                }
+
+                // Enable controls
+                categorySelect.disabled = false;
+                productSelect.disabled = false;
+                addButton.disabled = false;
+                loadingEl.style.display = 'none';
+
+                // Initialize the select boxes
+                init();
+
+            } catch (error) {
+                console.error('Error loading sheet:', error);
+                loadingEl.style.display = 'none';
+                errorEl.style.display = 'block';
+                
+                // Disable controls
+                categorySelect.disabled = true;
+                productSelect.disabled = true;
+                addButton.disabled = true;
+            }
+        }
+
+        function init() {
+            const catSelect = document.getElementById('categorySelect');
+            const categories = [...new Set(serviceData.map(item => item.category))];
+
+            // Clear existing options
+            catSelect.innerHTML = '';
+
+            categories.forEach(cat => {
+                let opt = document.createElement('option');
+                opt.value = cat;
+                opt.innerHTML = cat;
+                catSelect.appendChild(opt);
+            });
+            
+            if (categories.length > 0) {
+                updateProductList();
+            }
+        }
+
+        function updateProductList() {
+            const cat = document.getElementById('categorySelect').value;
+            const prodSelect = document.getElementById('productSelect');
+            prodSelect.innerHTML = "";
+
+            serviceData.filter(i => i.category === cat).forEach(prod => {
+                let opt = document.createElement('option');
+                opt.value = prod.name;
+                opt.innerHTML = prod.name;
+                prodSelect.appendChild(opt);
+            });
+        }
+
+        function addToCart() {
+            const prodName = document.getElementById('productSelect').value;
+            const units = parseInt(document.getElementById('unitsInput').value);
+            const itemData = serviceData.find(i => i.name === prodName);
+
+            const existing = cart.find(i => i.name === prodName);
+            if (existing) {
+                existing.units += units;
+            } else {
+                cart.push({
+                    name: prodName,
+                    units: units,
+                    pkr: itemData.pkr,
+                    sar: itemData.sar,
+                    aed: itemData.aed
+                });
+            }
+            renderCart();
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cartItems');
+            const valuationCard = document.getElementById('valuationCard');
+            const scopeHeader = document.getElementById('scopeHeader');
+            container.innerHTML = "";
+
+            if (cart.length === 0) {
+                valuationCard.style.display = "none";
+                scopeHeader.style.display = "none";
+                return;
+            }
+
+            valuationCard.style.display = "block";
+            scopeHeader.style.display = "block";
+
+            let totalPKR = 0, totalSAR = 0, totalAED = 0;
+
+            cart.forEach((item, index) => {
+                const subPKR = item.pkr * item.units;
+                const subSAR = item.sar * item.units;
+                const subAED = item.aed * item.units;
+
+                totalPKR += subPKR;
+                totalSAR += subSAR;
+                totalAED += subAED;
+
+                container.innerHTML += `
+                <div class="item-card">
+                    <div>
+                        <b style="font-size: 1.1rem;">${item.name} (x${item.units})</b>
+                        <p style="margin:5px 0 0 0; font-size:0.9rem;">
+                            <span class="bold-currency">SAR ${subSAR.toLocaleString()}</span> | 
+                            <span class="bold-currency">AED ${subAED.toLocaleString()}</span>
+                        </p>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <b style="font-size: 1.2rem;">PKR ${subPKR.toLocaleString()}</b>
+                        <button class="btn-del" onclick="removeItem(${index})">×</button>
+                    </div>
+                </div>
+            `;
+            });
+
+            document.getElementById('totalPKR').innerText = `PKR ${totalPKR.toLocaleString()}`;
+            document.getElementById('totalSAR').innerText = totalSAR.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.getElementById('totalAED').innerText = totalAED.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            renderCart();
+        }
+
+        function clearCart() {
+            cart = [];
+            renderCart();
+        }
+
+        // Start loading data when page loads
+        loadSheetData();
+    </script>
+</body>
+
+</html>
